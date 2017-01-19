@@ -83,3 +83,10 @@ message ConfChange {
     optional uint64          node_id        = 3; 
     optional bytes           context        = 4;
 }
+
+// A wrapper of ConfChangeType, it exists because proto2 enums cannot be used
+// directly in proto3 syntax.
+// See more: https://developers.google.com/protocol-buffers/docs/proto3#using-proto2-message-types
+message ConfChangeTypeWrapper {
+    required ConfChangeType type = 1;
+}
