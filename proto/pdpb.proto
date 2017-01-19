@@ -295,35 +295,3 @@ message Error {
     optional BootstrappedError     bootstrapped = 2;
     optional StoreIsTombstoneError is_tombstone = 3;
 }
-
-service PlacementService {
-    rpc Tso(Request) returns (Response) {}
-
-    rpc Bootstrap(Request) returns (Response) {}
-
-    rpc IsBootstrapped(Request) returns (Response) {}
-
-    rpc AllocId(Request) returns (Response) {}
-
-    rpc GetStore(Request) returns (Response) {}
-
-    rpc PutStore(Request) returns (Response) {}
-
-    rpc AskSplit(Request) returns (Response) {}
-
-    rpc GetRegion(Request) returns (Response) {}
-
-    rpc RegionHeartbeat(Request) returns (Response) {}
-
-    rpc GetClusterConfig(Request) returns (Response) {}
-
-    rpc PutClusterConfig(Request) returns (Response) {}
-
-    rpc StoreHeartbeat(Request) returns (Response) {}
-
-    rpc ReportSplit(Request) returns (Response) {}
-
-    rpc GetRegionByID(Request) returns (Response) {}
-
-    rpc GetPDMembers(Request) returns (Response) {}
-}
