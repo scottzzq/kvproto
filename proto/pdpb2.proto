@@ -47,18 +47,14 @@ service PD {
 }
 
 message RequestHeader {
-    // 16 bytes, to distinguish request.
-    bytes uuid = 1;
     // cluster_id is the ID of the cluster which be sent to.
-    uint64 cluster_id = 2;
+    uint64 cluster_id = 1;
 }
 
 message ResponseHeader {
-    // 16 bytes, to distinguish request.
-    bytes uuid = 1;
     // cluster_id is the ID of the cluster which sent the response.
-    uint64 cluster_id = 2;
-    Error error = 3;
+    uint64 cluster_id = 1;
+    Error error = 2;
 }
 
 enum ErrorType {
