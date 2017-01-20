@@ -25,7 +25,7 @@ service PD {
 
     rpc PutStore(PutStoreRequest) returns (PutStoreResponse) {}
 
-    rpc StoreHeartbeat(StoreHeartbeatRequest) returns (StoreHeartbeatResponse) {}
+    rpc StoreHeartbeat(stream StoreHeartbeatRequest) returns (stream StoreHeartbeatResponse) {}
 
     rpc AskSplit(AskSplitRequest) returns (AskSplitResponse) {}
 
