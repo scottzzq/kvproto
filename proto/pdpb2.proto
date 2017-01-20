@@ -17,9 +17,9 @@ service PD {
 
     // TODO: Carry it by rpc Bootstrap? Since a BOOTSTRAPPED Error is already
     // definded in ResponseHeader.
-    rpc IsBootstrapped(IsBootstrappedRequest) returns (IsBootstrappedRequest) {}
+    rpc IsBootstrapped(IsBootstrappedRequest) returns (IsBootstrappedResponse) {}
 
-    rpc AllocId(AllocIdRequest) returns (AllocIdResponse) {}
+    rpc AllocID(AllocIDRequest) returns (AllocIDResponse) {}
 
     rpc GetStore(GetStoreRequest) returns (GetStoreResponse) {}
 
@@ -103,11 +103,11 @@ message IsBootstrappedResponse {
     bool bootstrapped = 2;
 }
 
-message AllocIdRequest {
+message AllocIDRequest {
     RequestHeader header = 1;
 }
 
-message AllocIdResponse {
+message AllocIDResponse {
     ResponseHeader header = 1;
     uint64 id = 2;
 }
