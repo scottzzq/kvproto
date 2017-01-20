@@ -155,7 +155,7 @@ message GetRegionByIDRequest {
 // Use GetRegionResponse as the response of GetRegionByIDRequest.
 
 message GetClusterConfigRequest {
-    ResponseHeader header = 1;
+    RequestHeader header = 1;
 }
 
 message GetClusterConfigResponse {
