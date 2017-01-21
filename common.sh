@@ -9,3 +9,14 @@ check_protoc_version() {
     fi
 }
 
+push () {
+    pushd $1 >/dev/null 2>&1
+}
+
+pop () {
+    popd $1 >/dev/null 2>&1
+}
+
+cmd_exists () {
+    which "$1" 1>/dev/null 2>&1
+}

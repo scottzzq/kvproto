@@ -2,11 +2,7 @@
 
 . ./common.sh
 
-check_protoc_version
-
-cmd_exists () {
-    which "$1" 1>/dev/null 2>&1
-}
+check_protoc_version()
 
 # install rust-protobuf if it's missing
 if ! cmd_exists protoc-gen-rust; then
@@ -14,11 +10,13 @@ if ! cmd_exists protoc-gen-rust; then
     cargo install protobuf
 fi
 
-cd proto
+if ! cmd_exists protoc-gen-rust-grpc; then
+    echo "missing rust-protobuf, try to download/install it"
+    cargo install protobuf
+fi
 
+push proto
 echo "generate rust code..."
-ret=0
-
 gogo_protobuf_url=github.com/gogo/protobuf
 GOGO_ROOT=${GOPATH}/src/github.com/gogo/protobuf
 GO_INSTALL='go install'
@@ -39,17 +37,22 @@ if ! cmd_exists protoc-gen-gofast; then
     done
 fi
 
-protoc -I.:${GOGO_ROOT}:${GOGO_ROOT}/protobuf --rust_out ../src *.proto || ret=$?
+protoc -I.:${GOGO_ROOT}:${GOGO_ROOT}/protobuf --rust_out ../src *.proto || exit $?
+protoc -I.:${GOGO_ROOT}:${GOGO_ROOT}/protobuf --rust-grpc_out ../src *.proto || exit $?
+pop
 
-echo "extern crate protobuf;" > ../src/lib.rs
-for file in `ls *.proto`
+push src
+rm lib.rs
+echo "extern crate protobuf;" > lib
+echo "extern crate grpc;" >> lib
+echo "extern crate futures;" >> lib
+echo "extern crate futures_cpupool;" >> lib
+for file in `ls *.rs`
     do
-    base_name=$(basename $file ".proto")
-    echo "pub mod $base_name;" >> ../src/lib.rs
+    base_name=$(basename $file ".rs")
+    echo "pub mod $base_name;" >> lib
 done
+mv lib lib.rs
+pop
 
-if [[ $ret -ne 0 ]]; then
-	exit $ret
-fi
-cd ..
 cargo build
