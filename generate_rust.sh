@@ -11,8 +11,8 @@ if ! cmd_exists protoc-gen-rust; then
 fi
 
 if ! cmd_exists protoc-gen-rust-grpc; then
-    echo "missing rust-protobuf, try to download/install it"
-    cargo install protobuf
+    echo "missing rust-protobuf-grpc, please manually install it."
+    exit 1
 fi
 
 push proto
