@@ -11,6 +11,10 @@ option (gogoproto.marshaler_all) = true;
 option (gogoproto.unmarshaler_all) = true;
 
 service PD {
+    // GetPDMembers get the member list of this cluster. It does not require
+    // the cluster_id in request matchs the id of this cluster.
+    rpc GetPDMembers(GetPDMembersRequest) returns (GetPDMembersResponse) {}
+
     rpc Tso(TsoRequest) returns (TsoResponse) {}
 
     rpc Bootstrap(BootstrapRequest) returns (BootstrapResponse) {}
@@ -27,23 +31,21 @@ service PD {
 
     rpc StoreHeartbeat(stream StoreHeartbeatRequest) returns (stream StoreHeartbeatResponse) {}
 
-    rpc AskSplit(AskSplitRequest) returns (AskSplitResponse) {}
+    rpc RegionHeartbeat(stream RegionHeartbeatRequest) returns (stream RegionHeartbeatResponse) {}
 
-    rpc ReportSplit(ReportSplitRequest) returns (ReportSplitResponse) {}
-
-    rpc GetRegion(GetRegionRequest) returns (GetStoreResponse) {}
+    rpc GetRegion(GetRegionRequest) returns (GetRegionResponse) {}
 
     // TODO: Carry it by rpc GetRegion?
     // Just a matter of a new filed in GetRegionRequest.
     rpc GetRegionByID(GetRegionByIDRequest) returns (GetRegionResponse) {}
 
-    rpc RegionHeartbeat(RegionHeartbeatRequest) returns (RegionHeartbeatResponse) {}
+    rpc AskSplit(AskSplitRequest) returns (AskSplitResponse) {}
+
+    rpc ReportSplit(ReportSplitRequest) returns (ReportSplitResponse) {}
 
     rpc GetClusterConfig(GetClusterConfigRequest) returns (GetClusterConfigResponse) {}
 
     rpc PutClusterConfig(PutClusterConfigRequest) returns (PutClusterConfigResponse) {}
-
-    rpc GetPDMembers(GetPDMembersRequest) returns (GetPDMembersResponse) {}
 }
 
 message RequestHeader {
@@ -59,8 +61,10 @@ message ResponseHeader {
 
 enum ErrorType {
     OK = 0;
-    BOOTSTRAPPED = 1;
-    STORE_TOMBSTONE = 2;
+    UNKNOWN = 1;
+    BOOTSTRAPPED = 2;
+    NOT_BOOTSTRAPPED = 3;
+    STORE_TOMBSTONE = 4;
 }
 
 message Error {
@@ -168,8 +172,10 @@ message PutClusterConfigResponse {
     ResponseHeader header = 1;
 }
 
-message PDMember {
+message Member {
+    // name is the name of the PD member.
     string name = 1;
+    // member_id is the unique id of the PD member.
     uint64 member_id = 2;
     repeated string peer_urls = 3;
     repeated string client_urls = 4;
@@ -181,7 +187,7 @@ message GetPDMembersRequest {
 
 message GetPDMembersResponse {
     ResponseHeader header = 1;
-    repeated PDMember members = 2;
+    repeated Member members = 2;
 }
 
 message PeerStats {
