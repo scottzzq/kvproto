@@ -91,8 +91,8 @@ pub struct PDClient {
 }
 
 impl PDClient {
-    pub fn new(host: &str, port: u16, tls: bool) -> ::grpc::result::GrpcResult<Self> {
-        PDAsyncClient::new(host, port, tls).map(|c| {
+    pub fn new(host: &str, port: u16, tls: bool, conf: ::grpc::client::GrpcClientConf) -> ::grpc::result::GrpcResult<Self> {
+        PDAsyncClient::new(host, port, tls, conf).map(|c| {
             PDClient {
                 async_client: c,
             }
@@ -186,8 +186,8 @@ pub struct PDAsyncClient {
 }
 
 impl PDAsyncClient {
-    pub fn new(host: &str, port: u16, tls: bool) -> ::grpc::result::GrpcResult<Self> {
-        ::grpc::client::GrpcClient::new(host, port, tls).map(|c| {
+    pub fn new(host: &str, port: u16, tls: bool, conf: ::grpc::client::GrpcClientConf) -> ::grpc::result::GrpcResult<Self> {
+        ::grpc::client::GrpcClient::new(host, port, tls, conf).map(|c| {
             PDAsyncClient {
                 grpc_client: c,
                 method_GetPDMembers: ::std::sync::Arc::new(::grpc::method::MethodDescriptor {
@@ -466,18 +466,14 @@ impl PDAsync for PDServerHandlerToAsync {
 }
 
 impl PDServer {
-    pub fn new<A : ::std::net::ToSocketAddrs, H : PD + Send + Sync + 'static>(addr: A, h: H) -> Self {
+    pub fn new<A : ::std::net::ToSocketAddrs, H : PD + Send + Sync + 'static>(addr: A, conf: ::grpc::server::GrpcServerConf, h: H) -> Self {
         let h = PDServerHandlerToAsync {
             cpupool: ::futures_cpupool::CpuPool::new_num_cpus(),
             handler: ::std::sync::Arc::new(h),
         };
         PDServer {
-            async_server: PDAsyncServer::new(addr, h),
+            async_server: PDAsyncServer::new(addr, conf, h),
         }
-    }
-
-    pub fn serve(&self) {
-        self.async_server.serve();
     }
 }
 
@@ -488,10 +484,10 @@ pub struct PDAsyncServer {
 }
 
 impl PDAsyncServer {
-    pub fn new<A : ::std::net::ToSocketAddrs, H : PDAsync + 'static + Sync + Send + 'static>(addr: A, h: H) -> Self {
+    pub fn new<A : ::std::net::ToSocketAddrs, H : PDAsync + 'static + Sync + Send + 'static>(addr: A, conf: ::grpc::server::GrpcServerConf, h: H) -> Self {
         let service_definition = PDAsyncServer::new_service_def(h);
         PDAsyncServer {
-            grpc_server: ::grpc::server::GrpcServer::new(addr, service_definition),
+            grpc_server: ::grpc::server::GrpcServer::new(addr, conf, service_definition),
         }
     }
 
@@ -681,9 +677,5 @@ impl PDAsyncServer {
                 ),
             ],
         )
-    }
-
-    pub fn serve(&self) {
-        self.grpc_server.serve();
     }
 }
