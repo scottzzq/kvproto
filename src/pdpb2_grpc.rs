@@ -35,9 +35,9 @@ pub trait PD {
 
     fn PutStore(&self, p: super::pdpb2::PutStoreRequest) -> ::grpc::result::GrpcResult<super::pdpb2::PutStoreResponse>;
 
-    fn StoreHeartbeat(&self, p: ::grpc::iter::GrpcIterator<super::pdpb2::StoreHeartbeatRequest>) -> ::grpc::iter::GrpcIterator<super::pdpb2::StoreHeartbeatResponse>;
+    fn StoreHeartbeat(&self, p: super::pdpb2::StoreHeartbeatRequest) -> ::grpc::result::GrpcResult<super::pdpb2::StoreHeartbeatResponse>;
 
-    fn RegionHeartbeat(&self, p: ::grpc::iter::GrpcIterator<super::pdpb2::RegionHeartbeatRequest>) -> ::grpc::iter::GrpcIterator<super::pdpb2::RegionHeartbeatResponse>;
+    fn RegionHeartbeat(&self, p: super::pdpb2::RegionHeartbeatRequest) -> ::grpc::result::GrpcResult<super::pdpb2::RegionHeartbeatResponse>;
 
     fn GetRegion(&self, p: super::pdpb2::GetRegionRequest) -> ::grpc::result::GrpcResult<super::pdpb2::GetRegionResponse>;
 
@@ -67,9 +67,9 @@ pub trait PDAsync {
 
     fn PutStore(&self, p: super::pdpb2::PutStoreRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::PutStoreResponse>;
 
-    fn StoreHeartbeat(&self, p: ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::StoreHeartbeatRequest>) -> ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::StoreHeartbeatResponse>;
+    fn StoreHeartbeat(&self, p: super::pdpb2::StoreHeartbeatRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::StoreHeartbeatResponse>;
 
-    fn RegionHeartbeat(&self, p: ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::RegionHeartbeatRequest>) -> ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::RegionHeartbeatResponse>;
+    fn RegionHeartbeat(&self, p: super::pdpb2::RegionHeartbeatRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::RegionHeartbeatResponse>;
 
     fn GetRegion(&self, p: super::pdpb2::GetRegionRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::GetRegionResponse>;
 
@@ -129,14 +129,12 @@ impl PD for PDClient {
         ::futures::Future::wait(self.async_client.PutStore(p))
     }
 
-    fn StoreHeartbeat(&self, p: ::grpc::iter::GrpcIterator<super::pdpb2::StoreHeartbeatRequest>) -> ::grpc::iter::GrpcIterator<super::pdpb2::StoreHeartbeatResponse> {
-        let p = ::futures::stream::Stream::boxed(::futures::stream::iter(::std::iter::IntoIterator::into_iter(p)));
-        ::grpc::rt::stream_to_iter(self.async_client.StoreHeartbeat(p))
+    fn StoreHeartbeat(&self, p: super::pdpb2::StoreHeartbeatRequest) -> ::grpc::result::GrpcResult<super::pdpb2::StoreHeartbeatResponse> {
+        ::futures::Future::wait(self.async_client.StoreHeartbeat(p))
     }
 
-    fn RegionHeartbeat(&self, p: ::grpc::iter::GrpcIterator<super::pdpb2::RegionHeartbeatRequest>) -> ::grpc::iter::GrpcIterator<super::pdpb2::RegionHeartbeatResponse> {
-        let p = ::futures::stream::Stream::boxed(::futures::stream::iter(::std::iter::IntoIterator::into_iter(p)));
-        ::grpc::rt::stream_to_iter(self.async_client.RegionHeartbeat(p))
+    fn RegionHeartbeat(&self, p: super::pdpb2::RegionHeartbeatRequest) -> ::grpc::result::GrpcResult<super::pdpb2::RegionHeartbeatResponse> {
+        ::futures::Future::wait(self.async_client.RegionHeartbeat(p))
     }
 
     fn GetRegion(&self, p: super::pdpb2::GetRegionRequest) -> ::grpc::result::GrpcResult<super::pdpb2::GetRegionResponse> {
@@ -234,13 +232,13 @@ impl PDAsyncClient {
                 }),
                 method_StoreHeartbeat: ::std::sync::Arc::new(::grpc::method::MethodDescriptor {
                     name: "/pdpb2.PD/StoreHeartbeat".to_string(),
-                    streaming: ::grpc::method::GrpcStreaming::Bidi,
+                    streaming: ::grpc::method::GrpcStreaming::Unary,
                     req_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
                     resp_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
                 }),
                 method_RegionHeartbeat: ::std::sync::Arc::new(::grpc::method::MethodDescriptor {
                     name: "/pdpb2.PD/RegionHeartbeat".to_string(),
-                    streaming: ::grpc::method::GrpcStreaming::Bidi,
+                    streaming: ::grpc::method::GrpcStreaming::Unary,
                     req_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
                     resp_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
                 }),
@@ -314,12 +312,12 @@ impl PDAsync for PDAsyncClient {
         self.grpc_client.call_unary(p, self.method_PutStore.clone())
     }
 
-    fn StoreHeartbeat(&self, p: ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::StoreHeartbeatRequest>) -> ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::StoreHeartbeatResponse> {
-        self.grpc_client.call_bidi(p, self.method_StoreHeartbeat.clone())
+    fn StoreHeartbeat(&self, p: super::pdpb2::StoreHeartbeatRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::StoreHeartbeatResponse> {
+        self.grpc_client.call_unary(p, self.method_StoreHeartbeat.clone())
     }
 
-    fn RegionHeartbeat(&self, p: ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::RegionHeartbeatRequest>) -> ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::RegionHeartbeatResponse> {
-        self.grpc_client.call_bidi(p, self.method_RegionHeartbeat.clone())
+    fn RegionHeartbeat(&self, p: super::pdpb2::RegionHeartbeatRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::RegionHeartbeatResponse> {
+        self.grpc_client.call_unary(p, self.method_RegionHeartbeat.clone())
     }
 
     fn GetRegion(&self, p: super::pdpb2::GetRegionRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::GetRegionResponse> {
@@ -408,16 +406,16 @@ impl PDAsync for PDServerHandlerToAsync {
         })
     }
 
-    fn StoreHeartbeat(&self, p: ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::StoreHeartbeatRequest>) -> ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::StoreHeartbeatResponse> {
+    fn StoreHeartbeat(&self, p: super::pdpb2::StoreHeartbeatRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::StoreHeartbeatResponse> {
         let h = self.handler.clone();
-        ::grpc::rt::sync_to_async_bidi(&self.cpupool, p, move |p| {
+        ::grpc::rt::sync_to_async_unary(&self.cpupool, p, move |p| {
             h.StoreHeartbeat(p)
         })
     }
 
-    fn RegionHeartbeat(&self, p: ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::RegionHeartbeatRequest>) -> ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::RegionHeartbeatResponse> {
+    fn RegionHeartbeat(&self, p: super::pdpb2::RegionHeartbeatRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::RegionHeartbeatResponse> {
         let h = self.handler.clone();
-        ::grpc::rt::sync_to_async_bidi(&self.cpupool, p, move |p| {
+        ::grpc::rt::sync_to_async_unary(&self.cpupool, p, move |p| {
             h.RegionHeartbeat(p)
         })
     }
@@ -582,25 +580,25 @@ impl PDAsyncServer {
                 ::grpc::server::ServerMethod::new(
                     ::std::sync::Arc::new(::grpc::method::MethodDescriptor {
                         name: "/pdpb2.PD/StoreHeartbeat".to_string(),
-                        streaming: ::grpc::method::GrpcStreaming::Bidi,
+                        streaming: ::grpc::method::GrpcStreaming::Unary,
                         req_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
                         resp_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
                     }),
                     {
                         let handler_copy = handler_arc.clone();
-                        ::grpc::server::MethodHandlerBidi::new(move |p| handler_copy.StoreHeartbeat(p))
+                        ::grpc::server::MethodHandlerUnary::new(move |p| handler_copy.StoreHeartbeat(p))
                     },
                 ),
                 ::grpc::server::ServerMethod::new(
                     ::std::sync::Arc::new(::grpc::method::MethodDescriptor {
                         name: "/pdpb2.PD/RegionHeartbeat".to_string(),
-                        streaming: ::grpc::method::GrpcStreaming::Bidi,
+                        streaming: ::grpc::method::GrpcStreaming::Unary,
                         req_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
                         resp_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
                     }),
                     {
                         let handler_copy = handler_arc.clone();
-                        ::grpc::server::MethodHandlerBidi::new(move |p| handler_copy.RegionHeartbeat(p))
+                        ::grpc::server::MethodHandlerUnary::new(move |p| handler_copy.RegionHeartbeat(p))
                     },
                 ),
                 ::grpc::server::ServerMethod::new(
