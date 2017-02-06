@@ -42,7 +42,7 @@ protoc -I.:${GOGO_ROOT}:${GOGO_ROOT}/protobuf --rust-grpc_out ../src *.proto || 
 pop
 
 push src
-rm lib.rs
+rm -f lib.rs
 echo "extern crate protobuf;" > lib
 echo "extern crate grpc;" >> lib
 echo "extern crate futures;" >> lib
