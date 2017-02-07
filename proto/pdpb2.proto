@@ -19,10 +19,6 @@ service PD {
 
     rpc Bootstrap(BootstrapRequest) returns (BootstrapResponse) {}
 
-    // TODO: Carry it by rpc Bootstrap? Since a BOOTSTRAPPED Error is already
-    // definded in ResponseHeader.
-    rpc IsBootstrapped(IsBootstrappedRequest) returns (IsBootstrappedResponse) {}
-
     rpc AllocID(AllocIDRequest) returns (AllocIDResponse) {}
 
     rpc GetStore(GetStoreRequest) returns (GetStoreResponse) {}
@@ -34,10 +30,6 @@ service PD {
     rpc RegionHeartbeat(RegionHeartbeatRequest) returns (RegionHeartbeatResponse) {}
 
     rpc GetRegion(GetRegionRequest) returns (GetRegionResponse) {}
-
-    // TODO: Carry it by rpc GetRegion?
-    // Just a matter of a new filed in GetRegionRequest.
-    rpc GetRegionByID(GetRegionByIDRequest) returns (GetRegionResponse) {}
 
     rpc AskSplit(AskSplitRequest) returns (AskSplitResponse) {}
 
@@ -98,15 +90,6 @@ message BootstrapResponse {
     ResponseHeader header = 1;
 }
 
-message IsBootstrappedRequest {
-    RequestHeader header = 1;
-}
-
-message IsBootstrappedResponse {
-    ResponseHeader header = 1;
-    bool bootstrapped = 2;
-}
-
 message AllocIDRequest {
     RequestHeader header = 1;
 }
@@ -138,6 +121,7 @@ message PutStoreResponse {
 message GetRegionRequest {
     RequestHeader header = 1;
     bytes region_key = 2;
+    uint64 region_id = 3;
 }
 
 message GetRegionResponse {
@@ -149,7 +133,6 @@ message GetRegionResponse {
 // TODO: move it to GetRegionResponse?
 message GetRegionByIDRequest {
     RequestHeader header = 1;
-    uint64 region_id = 2;
 }
 
 // Use GetRegionResponse as the response of GetRegionByIDRequest.
