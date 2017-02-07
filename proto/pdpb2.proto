@@ -66,6 +66,7 @@ message Error {
 
 message TsoRequest {
     RequestHeader header = 1;
+
     uint32 count = 2;
 }
 
@@ -76,12 +77,14 @@ message Timestamp {
 
 message TsoResponse {
     ResponseHeader header = 1;
+
     uint32 count = 2;
     Timestamp timestamp = 3;
 }
 
 message BootstrapRequest {
     RequestHeader header = 1;
+
     metapb.Store store = 2;
     metapb.Region region = 3;
 }
@@ -96,21 +99,25 @@ message AllocIDRequest {
 
 message AllocIDResponse {
     ResponseHeader header = 1;
+
     uint64 id = 2;
 }
 
 message GetStoreRequest {
     RequestHeader header = 1;
+
     uint64 store_id = 2;
 }
 
 message GetStoreResponse {
     ResponseHeader header = 1;
+
     metapb.Store store = 2;
 }
 
 message PutStoreRequest {
     RequestHeader header = 1;
+
     metapb.Store store = 2;
 }
 
@@ -120,12 +127,14 @@ message PutStoreResponse {
 
 message GetRegionRequest {
     RequestHeader header = 1;
+
     bytes region_key = 2;
     uint64 region_id = 3;
 }
 
 message GetRegionResponse {
     ResponseHeader header = 1;
+
     metapb.Region region = 2;
     metapb.Peer leader = 3;
 }
@@ -143,11 +152,13 @@ message GetClusterConfigRequest {
 
 message GetClusterConfigResponse {
     ResponseHeader header = 1;
+
     metapb.Cluster cluster = 2;
 }
 
 message PutClusterConfigRequest {
     RequestHeader header = 1;
+
     metapb.Cluster cluster = 2;
 }
 
@@ -170,6 +181,7 @@ message GetPDMembersRequest {
 
 message GetPDMembersResponse {
     ResponseHeader header = 1;
+
     repeated Member members = 2;
 }
 
@@ -180,6 +192,7 @@ message PeerStats {
 
 message RegionHeartbeatRequest {
     RequestHeader header = 1;
+
     metapb.Region region = 2;
     // Leader Peer sending the heartbeat.
     metapb.Peer leader = 3;
@@ -202,6 +215,7 @@ message TransferLeader {
 
 message RegionHeartbeatResponse {
     ResponseHeader header = 1;
+
     // Notice, Pd only allows handling reported epoch >= current pd's.
     // Leader peer reports region status with RegionHeartbeatRequest
     // to pd regularly, pd will determine whether this region
@@ -223,11 +237,13 @@ message RegionHeartbeatResponse {
 
 message AskSplitRequest {
     RequestHeader header = 1;
+
     metapb.Region region = 2;
 }
 
 message AskSplitResponse {
     ResponseHeader header = 1;
+
     // We split the region into two, first uses the origin
     // parent region id, and the second uses the new_region_id.
     // We must guarantee that the new_region_id is global unique.
@@ -238,6 +254,7 @@ message AskSplitResponse {
 
 message ReportSplitRequest {
     RequestHeader header = 1;
+
     metapb.Region left = 2;
     metapb.Region right = 3;
 }
@@ -268,6 +285,7 @@ message StoreStats {
 
 message StoreHeartbeatRequest {
     RequestHeader header = 1;
+
     StoreStats stats = 2;
 }
 
