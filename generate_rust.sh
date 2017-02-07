@@ -42,17 +42,18 @@ protoc -I.:${GOGO_ROOT}:${GOGO_ROOT}/protobuf --rust-grpc_out ../src *.proto || 
 pop
 
 push src
+LIB_RS=`mktemp`
 rm -f lib.rs
-echo "extern crate protobuf;" > lib
-echo "extern crate grpc;" >> lib
-echo "extern crate futures;" >> lib
-echo "extern crate futures_cpupool;" >> lib
+echo "extern crate protobuf;" > ${LIB_RS}
+echo "extern crate grpc;" >> ${LIB_RS}
+echo "extern crate futures;" >> ${LIB_RS}
+echo "extern crate futures_cpupool;" >> ${LIB_RS}
 for file in `ls *.rs`
     do
     base_name=$(basename $file ".rs")
-    echo "pub mod $base_name;" >> lib
+    echo "pub mod $base_name;" >> ${LIB_RS}
 done
-mv lib lib.rs
+mv ${LIB_RS} lib.rs
 pop
 
 cargo build
