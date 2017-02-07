@@ -19,8 +19,6 @@ service PD {
 
     rpc Bootstrap(BootstrapRequest) returns (BootstrapResponse) {}
 
-    // TODO: Carry it by rpc Bootstrap? Since a BOOTSTRAPPED Error is already
-    // definded in ResponseHeader.
     rpc IsBootstrapped(IsBootstrappedRequest) returns (IsBootstrappedResponse) {}
 
     rpc AllocID(AllocIDRequest) returns (AllocIDResponse) {}
@@ -35,8 +33,6 @@ service PD {
 
     rpc GetRegion(GetRegionRequest) returns (GetRegionResponse) {}
 
-    // TODO: Carry it by rpc GetRegion?
-    // Just a matter of a new filed in GetRegionRequest.
     rpc GetRegionByID(GetRegionByIDRequest) returns (GetRegionResponse) {}
 
     rpc AskSplit(AskSplitRequest) returns (AskSplitResponse) {}
@@ -62,9 +58,8 @@ message ResponseHeader {
 enum ErrorType {
     OK = 0;
     UNKNOWN = 1;
-    BOOTSTRAPPED = 2;
-    NOT_BOOTSTRAPPED = 3;
-    STORE_TOMBSTONE = 4;
+    NOT_BOOTSTRAPPED = 2;
+    STORE_TOMBSTONE = 3;
 }
 
 message Error {
@@ -107,6 +102,7 @@ message IsBootstrappedRequest {
 
 message IsBootstrappedResponse {
     ResponseHeader header = 1;
+
     bool bootstrapped = 2;
 }
 
@@ -155,9 +151,9 @@ message GetRegionResponse {
     metapb.Peer leader = 3;
 }
 
-// TODO: move it to GetRegionResponse?
 message GetRegionByIDRequest {
     RequestHeader header = 1;
+
     uint64 region_id = 2;
 }
 
