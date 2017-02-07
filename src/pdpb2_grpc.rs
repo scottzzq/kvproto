@@ -27,6 +27,8 @@ pub trait PD {
 
     fn Bootstrap(&self, p: super::pdpb2::BootstrapRequest) -> ::grpc::result::GrpcResult<super::pdpb2::BootstrapResponse>;
 
+    fn IsBootstrapped(&self, p: super::pdpb2::IsBootstrappedRequest) -> ::grpc::result::GrpcResult<super::pdpb2::IsBootstrappedResponse>;
+
     fn AllocID(&self, p: super::pdpb2::AllocIDRequest) -> ::grpc::result::GrpcResult<super::pdpb2::AllocIDResponse>;
 
     fn GetStore(&self, p: super::pdpb2::GetStoreRequest) -> ::grpc::result::GrpcResult<super::pdpb2::GetStoreResponse>;
@@ -38,6 +40,8 @@ pub trait PD {
     fn RegionHeartbeat(&self, p: super::pdpb2::RegionHeartbeatRequest) -> ::grpc::result::GrpcResult<super::pdpb2::RegionHeartbeatResponse>;
 
     fn GetRegion(&self, p: super::pdpb2::GetRegionRequest) -> ::grpc::result::GrpcResult<super::pdpb2::GetRegionResponse>;
+
+    fn GetRegionByID(&self, p: super::pdpb2::GetRegionByIDRequest) -> ::grpc::result::GrpcResult<super::pdpb2::GetRegionResponse>;
 
     fn AskSplit(&self, p: super::pdpb2::AskSplitRequest) -> ::grpc::result::GrpcResult<super::pdpb2::AskSplitResponse>;
 
@@ -55,6 +59,8 @@ pub trait PDAsync {
 
     fn Bootstrap(&self, p: super::pdpb2::BootstrapRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::BootstrapResponse>;
 
+    fn IsBootstrapped(&self, p: super::pdpb2::IsBootstrappedRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::IsBootstrappedResponse>;
+
     fn AllocID(&self, p: super::pdpb2::AllocIDRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::AllocIDResponse>;
 
     fn GetStore(&self, p: super::pdpb2::GetStoreRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::GetStoreResponse>;
@@ -66,6 +72,8 @@ pub trait PDAsync {
     fn RegionHeartbeat(&self, p: super::pdpb2::RegionHeartbeatRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::RegionHeartbeatResponse>;
 
     fn GetRegion(&self, p: super::pdpb2::GetRegionRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::GetRegionResponse>;
+
+    fn GetRegionByID(&self, p: super::pdpb2::GetRegionByIDRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::GetRegionResponse>;
 
     fn AskSplit(&self, p: super::pdpb2::AskSplitRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::AskSplitResponse>;
 
@@ -105,6 +113,10 @@ impl PD for PDClient {
         ::futures::Future::wait(self.async_client.Bootstrap(p))
     }
 
+    fn IsBootstrapped(&self, p: super::pdpb2::IsBootstrappedRequest) -> ::grpc::result::GrpcResult<super::pdpb2::IsBootstrappedResponse> {
+        ::futures::Future::wait(self.async_client.IsBootstrapped(p))
+    }
+
     fn AllocID(&self, p: super::pdpb2::AllocIDRequest) -> ::grpc::result::GrpcResult<super::pdpb2::AllocIDResponse> {
         ::futures::Future::wait(self.async_client.AllocID(p))
     }
@@ -127,6 +139,10 @@ impl PD for PDClient {
 
     fn GetRegion(&self, p: super::pdpb2::GetRegionRequest) -> ::grpc::result::GrpcResult<super::pdpb2::GetRegionResponse> {
         ::futures::Future::wait(self.async_client.GetRegion(p))
+    }
+
+    fn GetRegionByID(&self, p: super::pdpb2::GetRegionByIDRequest) -> ::grpc::result::GrpcResult<super::pdpb2::GetRegionResponse> {
+        ::futures::Future::wait(self.async_client.GetRegionByID(p))
     }
 
     fn AskSplit(&self, p: super::pdpb2::AskSplitRequest) -> ::grpc::result::GrpcResult<super::pdpb2::AskSplitResponse> {
@@ -153,12 +169,14 @@ pub struct PDAsyncClient {
     method_GetPDMembers: ::std::sync::Arc<::grpc::method::MethodDescriptor<super::pdpb2::GetPDMembersRequest, super::pdpb2::GetPDMembersResponse>>,
     method_Tso: ::std::sync::Arc<::grpc::method::MethodDescriptor<super::pdpb2::TsoRequest, super::pdpb2::TsoResponse>>,
     method_Bootstrap: ::std::sync::Arc<::grpc::method::MethodDescriptor<super::pdpb2::BootstrapRequest, super::pdpb2::BootstrapResponse>>,
+    method_IsBootstrapped: ::std::sync::Arc<::grpc::method::MethodDescriptor<super::pdpb2::IsBootstrappedRequest, super::pdpb2::IsBootstrappedResponse>>,
     method_AllocID: ::std::sync::Arc<::grpc::method::MethodDescriptor<super::pdpb2::AllocIDRequest, super::pdpb2::AllocIDResponse>>,
     method_GetStore: ::std::sync::Arc<::grpc::method::MethodDescriptor<super::pdpb2::GetStoreRequest, super::pdpb2::GetStoreResponse>>,
     method_PutStore: ::std::sync::Arc<::grpc::method::MethodDescriptor<super::pdpb2::PutStoreRequest, super::pdpb2::PutStoreResponse>>,
     method_StoreHeartbeat: ::std::sync::Arc<::grpc::method::MethodDescriptor<super::pdpb2::StoreHeartbeatRequest, super::pdpb2::StoreHeartbeatResponse>>,
     method_RegionHeartbeat: ::std::sync::Arc<::grpc::method::MethodDescriptor<super::pdpb2::RegionHeartbeatRequest, super::pdpb2::RegionHeartbeatResponse>>,
     method_GetRegion: ::std::sync::Arc<::grpc::method::MethodDescriptor<super::pdpb2::GetRegionRequest, super::pdpb2::GetRegionResponse>>,
+    method_GetRegionByID: ::std::sync::Arc<::grpc::method::MethodDescriptor<super::pdpb2::GetRegionByIDRequest, super::pdpb2::GetRegionResponse>>,
     method_AskSplit: ::std::sync::Arc<::grpc::method::MethodDescriptor<super::pdpb2::AskSplitRequest, super::pdpb2::AskSplitResponse>>,
     method_ReportSplit: ::std::sync::Arc<::grpc::method::MethodDescriptor<super::pdpb2::ReportSplitRequest, super::pdpb2::ReportSplitResponse>>,
     method_GetClusterConfig: ::std::sync::Arc<::grpc::method::MethodDescriptor<super::pdpb2::GetClusterConfigRequest, super::pdpb2::GetClusterConfigResponse>>,
@@ -184,6 +202,12 @@ impl PDAsyncClient {
                 }),
                 method_Bootstrap: ::std::sync::Arc::new(::grpc::method::MethodDescriptor {
                     name: "/pdpb2.PD/Bootstrap".to_string(),
+                    streaming: ::grpc::method::GrpcStreaming::Unary,
+                    req_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
+                    resp_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
+                }),
+                method_IsBootstrapped: ::std::sync::Arc::new(::grpc::method::MethodDescriptor {
+                    name: "/pdpb2.PD/IsBootstrapped".to_string(),
                     streaming: ::grpc::method::GrpcStreaming::Unary,
                     req_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
                     resp_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
@@ -220,6 +244,12 @@ impl PDAsyncClient {
                 }),
                 method_GetRegion: ::std::sync::Arc::new(::grpc::method::MethodDescriptor {
                     name: "/pdpb2.PD/GetRegion".to_string(),
+                    streaming: ::grpc::method::GrpcStreaming::Unary,
+                    req_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
+                    resp_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
+                }),
+                method_GetRegionByID: ::std::sync::Arc::new(::grpc::method::MethodDescriptor {
+                    name: "/pdpb2.PD/GetRegionByID".to_string(),
                     streaming: ::grpc::method::GrpcStreaming::Unary,
                     req_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
                     resp_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
@@ -266,6 +296,10 @@ impl PDAsync for PDAsyncClient {
         self.grpc_client.call_unary(p, self.method_Bootstrap.clone())
     }
 
+    fn IsBootstrapped(&self, p: super::pdpb2::IsBootstrappedRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::IsBootstrappedResponse> {
+        self.grpc_client.call_unary(p, self.method_IsBootstrapped.clone())
+    }
+
     fn AllocID(&self, p: super::pdpb2::AllocIDRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::AllocIDResponse> {
         self.grpc_client.call_unary(p, self.method_AllocID.clone())
     }
@@ -288,6 +322,10 @@ impl PDAsync for PDAsyncClient {
 
     fn GetRegion(&self, p: super::pdpb2::GetRegionRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::GetRegionResponse> {
         self.grpc_client.call_unary(p, self.method_GetRegion.clone())
+    }
+
+    fn GetRegionByID(&self, p: super::pdpb2::GetRegionByIDRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::GetRegionResponse> {
+        self.grpc_client.call_unary(p, self.method_GetRegionByID.clone())
     }
 
     fn AskSplit(&self, p: super::pdpb2::AskSplitRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::AskSplitResponse> {
@@ -340,6 +378,13 @@ impl PDAsync for PDServerHandlerToAsync {
         })
     }
 
+    fn IsBootstrapped(&self, p: super::pdpb2::IsBootstrappedRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::IsBootstrappedResponse> {
+        let h = self.handler.clone();
+        ::grpc::rt::sync_to_async_unary(&self.cpupool, p, move |p| {
+            h.IsBootstrapped(p)
+        })
+    }
+
     fn AllocID(&self, p: super::pdpb2::AllocIDRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::AllocIDResponse> {
         let h = self.handler.clone();
         ::grpc::rt::sync_to_async_unary(&self.cpupool, p, move |p| {
@@ -379,6 +424,13 @@ impl PDAsync for PDServerHandlerToAsync {
         let h = self.handler.clone();
         ::grpc::rt::sync_to_async_unary(&self.cpupool, p, move |p| {
             h.GetRegion(p)
+        })
+    }
+
+    fn GetRegionByID(&self, p: super::pdpb2::GetRegionByIDRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::GetRegionResponse> {
+        let h = self.handler.clone();
+        ::grpc::rt::sync_to_async_unary(&self.cpupool, p, move |p| {
+            h.GetRegionByID(p)
         })
     }
 
@@ -479,6 +531,18 @@ impl PDAsyncServer {
                 ),
                 ::grpc::server::ServerMethod::new(
                     ::std::sync::Arc::new(::grpc::method::MethodDescriptor {
+                        name: "/pdpb2.PD/IsBootstrapped".to_string(),
+                        streaming: ::grpc::method::GrpcStreaming::Unary,
+                        req_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
+                        resp_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
+                    }),
+                    {
+                        let handler_copy = handler_arc.clone();
+                        ::grpc::server::MethodHandlerUnary::new(move |p| handler_copy.IsBootstrapped(p))
+                    },
+                ),
+                ::grpc::server::ServerMethod::new(
+                    ::std::sync::Arc::new(::grpc::method::MethodDescriptor {
                         name: "/pdpb2.PD/AllocID".to_string(),
                         streaming: ::grpc::method::GrpcStreaming::Unary,
                         req_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
@@ -547,6 +611,18 @@ impl PDAsyncServer {
                     {
                         let handler_copy = handler_arc.clone();
                         ::grpc::server::MethodHandlerUnary::new(move |p| handler_copy.GetRegion(p))
+                    },
+                ),
+                ::grpc::server::ServerMethod::new(
+                    ::std::sync::Arc::new(::grpc::method::MethodDescriptor {
+                        name: "/pdpb2.PD/GetRegionByID".to_string(),
+                        streaming: ::grpc::method::GrpcStreaming::Unary,
+                        req_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
+                        resp_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
+                    }),
+                    {
+                        let handler_copy = handler_arc.clone();
+                        ::grpc::server::MethodHandlerUnary::new(move |p| handler_copy.GetRegionByID(p))
                     },
                 ),
                 ::grpc::server::ServerMethod::new(
