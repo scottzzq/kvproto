@@ -14,7 +14,7 @@ service PD {
     // the cluster_id in request matchs the id of this cluster.
     rpc GetPDMembers(GetPDMembersRequest) returns (GetPDMembersResponse) {}
 
-    rpc Tso(TsoRequest) returns (TsoResponse) {}
+    rpc Tso(stream TsoRequest) returns (stream TsoResponse) {}
 
     rpc Bootstrap(BootstrapRequest) returns (BootstrapResponse) {}
 

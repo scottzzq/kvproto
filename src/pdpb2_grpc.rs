@@ -23,7 +23,7 @@
 pub trait PD {
     fn GetPDMembers(&self, p: super::pdpb2::GetPDMembersRequest) -> ::grpc::result::GrpcResult<super::pdpb2::GetPDMembersResponse>;
 
-    fn Tso(&self, p: super::pdpb2::TsoRequest) -> ::grpc::result::GrpcResult<super::pdpb2::TsoResponse>;
+    fn Tso(&self, p: ::grpc::iter::GrpcIterator<super::pdpb2::TsoRequest>) -> ::grpc::iter::GrpcIterator<super::pdpb2::TsoResponse>;
 
     fn Bootstrap(&self, p: super::pdpb2::BootstrapRequest) -> ::grpc::result::GrpcResult<super::pdpb2::BootstrapResponse>;
 
@@ -55,7 +55,7 @@ pub trait PD {
 pub trait PDAsync {
     fn GetPDMembers(&self, p: super::pdpb2::GetPDMembersRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::GetPDMembersResponse>;
 
-    fn Tso(&self, p: super::pdpb2::TsoRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::TsoResponse>;
+    fn Tso(&self, p: ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::TsoRequest>) -> ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::TsoResponse>;
 
     fn Bootstrap(&self, p: super::pdpb2::BootstrapRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::BootstrapResponse>;
 
@@ -105,8 +105,9 @@ impl PD for PDClient {
         ::futures::Future::wait(self.async_client.GetPDMembers(p))
     }
 
-    fn Tso(&self, p: super::pdpb2::TsoRequest) -> ::grpc::result::GrpcResult<super::pdpb2::TsoResponse> {
-        ::futures::Future::wait(self.async_client.Tso(p))
+    fn Tso(&self, p: ::grpc::iter::GrpcIterator<super::pdpb2::TsoRequest>) -> ::grpc::iter::GrpcIterator<super::pdpb2::TsoResponse> {
+        let p = ::futures::stream::Stream::boxed(::futures::stream::iter(::std::iter::IntoIterator::into_iter(p)));
+        ::grpc::rt::stream_to_iter(self.async_client.Tso(p))
     }
 
     fn Bootstrap(&self, p: super::pdpb2::BootstrapRequest) -> ::grpc::result::GrpcResult<super::pdpb2::BootstrapResponse> {
@@ -196,7 +197,7 @@ impl PDAsyncClient {
                 }),
                 method_Tso: ::std::sync::Arc::new(::grpc::method::MethodDescriptor {
                     name: "/pdpb2.PD/Tso".to_string(),
-                    streaming: ::grpc::method::GrpcStreaming::Unary,
+                    streaming: ::grpc::method::GrpcStreaming::Bidi,
                     req_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
                     resp_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
                 }),
@@ -288,8 +289,8 @@ impl PDAsync for PDAsyncClient {
         self.grpc_client.call_unary(p, self.method_GetPDMembers.clone())
     }
 
-    fn Tso(&self, p: super::pdpb2::TsoRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::TsoResponse> {
-        self.grpc_client.call_unary(p, self.method_Tso.clone())
+    fn Tso(&self, p: ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::TsoRequest>) -> ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::TsoResponse> {
+        self.grpc_client.call_bidi(p, self.method_Tso.clone())
     }
 
     fn Bootstrap(&self, p: super::pdpb2::BootstrapRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::BootstrapResponse> {
@@ -364,9 +365,9 @@ impl PDAsync for PDServerHandlerToAsync {
         })
     }
 
-    fn Tso(&self, p: super::pdpb2::TsoRequest) -> ::grpc::futures_grpc::GrpcFutureSend<super::pdpb2::TsoResponse> {
+    fn Tso(&self, p: ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::TsoRequest>) -> ::grpc::futures_grpc::GrpcStreamSend<super::pdpb2::TsoResponse> {
         let h = self.handler.clone();
-        ::grpc::rt::sync_to_async_unary(&self.cpupool, p, move |p| {
+        ::grpc::rt::sync_to_async_bidi(&self.cpupool, p, move |p| {
             h.Tso(p)
         })
     }
@@ -508,13 +509,13 @@ impl PDAsyncServer {
                 ::grpc::server::ServerMethod::new(
                     ::std::sync::Arc::new(::grpc::method::MethodDescriptor {
                         name: "/pdpb2.PD/Tso".to_string(),
-                        streaming: ::grpc::method::GrpcStreaming::Unary,
+                        streaming: ::grpc::method::GrpcStreaming::Bidi,
                         req_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
                         resp_marshaller: Box::new(::grpc::grpc_protobuf::MarshallerProtobuf),
                     }),
                     {
                         let handler_copy = handler_arc.clone();
-                        ::grpc::server::MethodHandlerUnary::new(move |p| handler_copy.Tso(p))
+                        ::grpc::server::MethodHandlerBidi::new(move |p| handler_copy.Tso(p))
                     },
                 ),
                 ::grpc::server::ServerMethod::new(
