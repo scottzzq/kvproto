@@ -27,6 +27,7 @@ enum MessageType {
     CmdRawGet           = 256;
     CmdRawPut           = 257;
     CmdRawDelete        = 258;
+    CmdRawScan          = 259;
 }
 
 message LockInfo {
