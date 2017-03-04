@@ -15,6 +15,10 @@ go: link_gopath_src
 rust: link_gopath_src
 	GOPATH=$(CURDIR)/_vendor ./generate_rust.sh
 
+py: link_gopath_src
+	GOPATH=$(CURDIR)/_vendor ./generate_py.sh
+
+
 link_gopath_src:
 	rm -f _vendor/src
 	ln -s ./vendor _vendor/src
