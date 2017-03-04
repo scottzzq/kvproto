@@ -42,13 +42,6 @@ fi
 protoc --python_out ../py_src *.proto || ret=$?
 #protoc -I.:${GOGO_ROOT}:${GOGO_ROOT}/protobuf --python_out ../py_src *.proto || ret=$?
 
-echo "extern crate protobuf;" > ../src/lib.rs
-for file in `ls *.proto`
-    do
-    base_name=$(basename $file ".proto")
-    #echo "pub mod $base_name;" >> ../src/lib.rs
-done
-
 if [[ $ret -ne 0 ]]; then
 	exit $ret
 fi
