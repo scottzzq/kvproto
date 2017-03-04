@@ -142,6 +142,12 @@ message CmdBatchGetResponse {
     repeated KvPair pairs = 1;
 }
 
+message CmdRawScanResponse {
+    repeated KvPair pairs = 1;
+}
+
+
+
 message CmdScanLockRequest {
     optional uint64 max_version = 1 [(gogoproto.nullable) = false];
 }
@@ -171,6 +177,12 @@ message CmdGCResponse {
 
 message CmdRawGetRequest {
     optional bytes key = 1;
+}
+
+message CmdRawScanRequest {
+    optional bytes start_key = 1;
+    optional bytes end_key   = 2;
+    optional uint64 limit    = 3;
 }
 
 message CmdRawGetResponse {
@@ -212,6 +224,7 @@ message Request {
     optional CmdRawGetRequest          cmd_raw_get_req        = 256;
     optional CmdRawPutRequest          cmd_raw_put_req        = 257;
     optional CmdRawDeleteRequest       cmd_raw_delete_req     = 258;
+    optional CmdRawScanRequest         cmd_raw_scan_req       = 259;
 }
 
 message Response {
@@ -231,4 +244,5 @@ message Response {
     optional CmdRawGetResponse          cmd_raw_get_resp        = 256;
     optional CmdRawPutResponse          cmd_raw_put_resp        = 257;
     optional CmdRawDeleteResponse       cmd_raw_delete_resp     = 258;      
+    optional CmdRawScanResponse         cmd_batch_scan_resp     = 259;
 }
