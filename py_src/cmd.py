@@ -52,28 +52,28 @@ print header
 #}
 #message GetRequest {
 #    optional string cf  = 1;
-#    optional bytes  key = 2;
+#    optional uint64  key = 2;
 #}
 get_req = raft_cmdpb_pb2.GetRequest()
-get_req.key = "zhaizhiqiang".encode("utf8")
+get_req.key = 1
 
 #message PutRequest {
 #    optional string cf    = 1;
-#    optional bytes  key   = 2;
+#    optional uint64  key   = 2;
 #    optional bytes  value = 3;
 #}
 
 put_req = raft_cmdpb_pb2.PutRequest()
-put_req.key = "zhaizhiqiang".encode("utf8")
+put_req.key = 1
 put_req.value = "wangqing08".encode("utf8")
 
 #message DeleteRequest {
 #    optional string cf  = 1;
-#    optional bytes  key = 2;
+#    optional uint64  key = 2;
 #}
 
 del_req = raft_cmdpb_pb2.DeleteRequest()
-del_req.key = "zhaizhiqiang".encode("utf8")
+del_req.key = 1
 
 #message Request {
 #    optional CmdType        cmd_type    = 1;
