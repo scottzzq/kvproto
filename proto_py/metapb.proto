@@ -43,6 +43,7 @@ message Region {
     optional bytes  end_key             = 3;
     optional RegionEpoch region_epoch   = 4;
     repeated Peer   peers               = 5;
+    optional uint64  term             = 6;
 }
 
 message Peer {      
