@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='metapb.proto',
   package='metapb',
   syntax='proto2',
-  serialized_pb=_b('\n\x0cmetapb.proto\x12\x06metapb\"-\n\x07\x43luster\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x16\n\x0emax_peer_count\x18\x02 \x01(\r\"(\n\nStoreLabel\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"k\n\x05Store\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\t\x12!\n\x05state\x18\x03 \x01(\x0e\x32\x12.metapb.StoreState\x12\"\n\x06labels\x18\x04 \x03(\x0b\x32\x12.metapb.StoreLabel\"0\n\x0bRegionEpoch\x12\x10\n\x08\x63onf_ver\x18\x01 \x01(\x04\x12\x0f\n\x07version\x18\x02 \x01(\x04\"\x80\x01\n\x06Region\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x11\n\tstart_key\x18\x02 \x01(\x0c\x12\x0f\n\x07\x65nd_key\x18\x03 \x01(\x0c\x12)\n\x0cregion_epoch\x18\x04 \x01(\x0b\x32\x13.metapb.RegionEpoch\x12\x1b\n\x05peers\x18\x05 \x03(\x0b\x32\x0c.metapb.Peer\"$\n\x04Peer\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x10\n\x08store_id\x18\x02 \x01(\x04*0\n\nStoreState\x12\x06\n\x02Up\x10\x00\x12\x0b\n\x07Offline\x10\x01\x12\r\n\tTombstone\x10\x02')
+  serialized_pb=_b('\n\x0cmetapb.proto\x12\x06metapb\"-\n\x07\x43luster\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x16\n\x0emax_peer_count\x18\x02 \x01(\r\"(\n\nStoreLabel\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"k\n\x05Store\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\t\x12!\n\x05state\x18\x03 \x01(\x0e\x32\x12.metapb.StoreState\x12\"\n\x06labels\x18\x04 \x03(\x0b\x32\x12.metapb.StoreLabel\"0\n\x0bRegionEpoch\x12\x10\n\x08\x63onf_ver\x18\x01 \x01(\x04\x12\x0f\n\x07version\x18\x02 \x01(\x04\"\x8e\x01\n\x06Region\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x11\n\tstart_key\x18\x02 \x01(\x0c\x12\x0f\n\x07\x65nd_key\x18\x03 \x01(\x0c\x12)\n\x0cregion_epoch\x18\x04 \x01(\x0b\x32\x13.metapb.RegionEpoch\x12\x1b\n\x05peers\x18\x05 \x03(\x0b\x32\x0c.metapb.Peer\x12\x0c\n\x04term\x18\x06 \x01(\x04\"$\n\x04Peer\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x10\n\x08store_id\x18\x02 \x01(\x04*0\n\nStoreState\x12\x06\n\x02Up\x10\x00\x12\x0b\n\x07Offline\x10\x01\x12\r\n\tTombstone\x10\x02')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -45,8 +45,8 @@ _STORESTATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=441,
-  serialized_end=489,
+  serialized_start=455,
+  serialized_end=503,
 )
 _sym_db.RegisterEnumDescriptor(_STORESTATE)
 
@@ -265,6 +265,13 @@ _REGION = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='term', full_name='metapb.Region.term', index=5,
+      number=6, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -278,7 +285,7 @@ _REGION = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=273,
-  serialized_end=401,
+  serialized_end=415,
 )
 
 
@@ -315,8 +322,8 @@ _PEER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=403,
-  serialized_end=439,
+  serialized_start=417,
+  serialized_end=453,
 )
 
 _STORE.fields_by_name['state'].enum_type = _STORESTATE

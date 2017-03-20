@@ -85,6 +85,7 @@ _MESSAGETYPE = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_MESSAGETYPE)
 
 MessageType = enum_type_wrapper.EnumTypeWrapper(_MESSAGETYPE)
+None = 0
 Cmd = 1
 CmdResp = 2
 Raft = 3
