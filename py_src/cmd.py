@@ -118,6 +118,7 @@ print resp_message
 #     optional bytes  end_key             = 3;
 #     optional RegionEpoch region_epoch   = 4;
 #     repeated Peer   peers               = 5;
+#     optional uint64 term                = 6;
 # }
 # message Peer {      
 #     optional uint64 id          = 1 [(gogoproto.nullable) = false]; 
@@ -179,6 +180,7 @@ get_store_resp = resp_message.pd_resp.get_store
 ###################################Raft命令Header####################
 peer = get_region_by_id_resp.leader
 region_epoch = get_region_by_id_resp.region.region_epoch
+term = get_region_by_id_resp.region.term
 #message RaftRequestHeader {
 #    optional uint64 region_id                   = 1;
 #    optional metapb.Peer peer                   = 2;
@@ -193,12 +195,13 @@ ip_port = (ip_port_str.split(":")[0], int(ip_port_str.split(":")[1]))
 sk = socket.socket()
 sk.connect(ip_port)
 
-for i in range(1, 100000):
+for i in range(1, 1000):
 	header = raft_cmdpb_pb2.RaftRequestHeader()
 	header.region_id = 100
 	header.peer.MergeFrom(peer)
 	header.uuid = uuid.uuid1().bytes
 	header.region_epoch.MergeFrom(region_epoch)
+	header.term = term
 	#enum CmdType {
 	#    Invalid     = 0;
 	#    Get         = 1;
@@ -247,8 +250,8 @@ for i in range(1, 100000):
 	req.get.MergeFrom(get_req)
 	
 	# #2.Put
-	req.cmd_type = raft_cmdpb_pb2.Put
-	req.put.MergeFrom(put_req)
+	#req.cmd_type = raft_cmdpb_pb2.Put
+	#req.put.MergeFrom(put_req)
 	
 	# #3.Delete
 	# #req.cmd_type = raft_cmdpb_pb2.Delete
