@@ -250,8 +250,8 @@ for i in range(1, 1000):
 	req.get.MergeFrom(get_req)
 	
 	# #2.Put
-	#req.cmd_type = raft_cmdpb_pb2.Put
-	#req.put.MergeFrom(put_req)
+	req.cmd_type = raft_cmdpb_pb2.Put
+	req.put.MergeFrom(put_req)
 	
 	# #3.Delete
 	# #req.cmd_type = raft_cmdpb_pb2.Delete
