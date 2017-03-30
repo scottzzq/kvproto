@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='eraftpb.proto',
   package='eraftpb',
   syntax='proto2',
-  serialized_pb=_b('\n\reraftpb.proto\x12\x07\x65raftpb\"\x85\x01\n\x05\x45ntry\x12&\n\nentry_type\x18\x01 \x01(\x0e\x32\x12.eraftpb.EntryType\x12\x0c\n\x04term\x18\x02 \x01(\x04\x12\r\n\x05index\x18\x03 \x01(\x04\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\x0c\x12\x0b\n\x03key\x18\x05 \x01(\x04\x12\x0e\n\x06offset\x18\x06 \x01(\x04\x12\x0c\n\x04size\x18\x07 \x01(\x04\"W\n\x10SnapshotMetadata\x12&\n\nconf_state\x18\x01 \x01(\x0b\x32\x12.eraftpb.ConfState\x12\r\n\x05index\x18\x02 \x01(\x04\x12\x0c\n\x04term\x18\x03 \x01(\x04\"E\n\x08Snapshot\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12+\n\x08metadata\x18\x02 \x01(\x0b\x32\x19.eraftpb.SnapshotMetadata\"\x86\x02\n\x07Message\x12&\n\x08msg_type\x18\x01 \x01(\x0e\x32\x14.eraftpb.MessageType\x12\n\n\x02to\x18\x02 \x01(\x04\x12\x0c\n\x04\x66rom\x18\x03 \x01(\x04\x12\x0c\n\x04term\x18\x04 \x01(\x04\x12\x10\n\x08log_term\x18\x05 \x01(\x04\x12\r\n\x05index\x18\x06 \x01(\x04\x12\x1f\n\x07\x65ntries\x18\x07 \x03(\x0b\x32\x0e.eraftpb.Entry\x12\x0e\n\x06\x63ommit\x18\x08 \x01(\x04\x12#\n\x08snapshot\x18\t \x01(\x0b\x32\x11.eraftpb.Snapshot\x12\x0e\n\x06reject\x18\n \x01(\x08\x12\x13\n\x0breject_hint\x18\x0b \x01(\x04\x12\x0f\n\x07\x63ontext\x18\x0c \x01(\x0c\"7\n\tHardState\x12\x0c\n\x04term\x18\x01 \x01(\x04\x12\x0c\n\x04vote\x18\x02 \x01(\x04\x12\x0e\n\x06\x63ommit\x18\x03 \x01(\x04\"\x1a\n\tConfState\x12\r\n\x05nodes\x18\x01 \x03(\x04\"h\n\nConfChange\x12\n\n\x02id\x18\x01 \x01(\x04\x12,\n\x0b\x63hange_type\x18\x02 \x01(\x0e\x32\x17.eraftpb.ConfChangeType\x12\x0f\n\x07node_id\x18\x03 \x01(\x04\x12\x0f\n\x07\x63ontext\x18\x04 \x01(\x0c*1\n\tEntryType\x12\x0f\n\x0b\x45ntryNormal\x10\x00\x12\x13\n\x0f\x45ntryConfChange\x10\x01*\x8c\x03\n\x0bMessageType\x12\n\n\x06MsgHup\x10\x00\x12\x0b\n\x07MsgBeat\x10\x01\x12\x0e\n\nMsgPropose\x10\x02\x12\r\n\tMsgAppend\x10\x03\x12\x15\n\x11MsgAppendResponse\x10\x04\x12\x12\n\x0eMsgRequestVote\x10\x05\x12\x1a\n\x16MsgRequestVoteResponse\x10\x06\x12\x0f\n\x0bMsgSnapshot\x10\x07\x12\x10\n\x0cMsgHeartbeat\x10\x08\x12\x18\n\x14MsgHeartbeatResponse\x10\t\x12\x12\n\x0eMsgUnreachable\x10\n\x12\x11\n\rMsgSnapStatus\x10\x0b\x12\x12\n\x0eMsgCheckQuorum\x10\x0c\x12\x15\n\x11MsgTransferLeader\x10\r\x12\x11\n\rMsgTimeoutNow\x10\x0e\x12\x10\n\x0cMsgReadIndex\x10\x0f\x12\x14\n\x10MsgReadIndexResp\x10\x10\x12\x15\n\x11MsgRequestPreVote\x10\x11\x12\x1d\n\x19MsgRequestPreVoteResponse\x10\x12*-\n\x0e\x43onfChangeType\x12\x0b\n\x07\x41\x64\x64Node\x10\x00\x12\x0e\n\nRemoveNode\x10\x01')
+  serialized_pb=_b('\n\reraftpb.proto\x12\x07\x65raftpb\"Z\n\x05\x45ntry\x12&\n\nentry_type\x18\x01 \x01(\x0e\x32\x12.eraftpb.EntryType\x12\x0c\n\x04term\x18\x02 \x01(\x04\x12\r\n\x05index\x18\x03 \x01(\x04\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\x0c\"W\n\x10SnapshotMetadata\x12&\n\nconf_state\x18\x01 \x01(\x0b\x32\x12.eraftpb.ConfState\x12\r\n\x05index\x18\x02 \x01(\x04\x12\x0c\n\x04term\x18\x03 \x01(\x04\"E\n\x08Snapshot\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12+\n\x08metadata\x18\x02 \x01(\x0b\x32\x19.eraftpb.SnapshotMetadata\"\x86\x02\n\x07Message\x12&\n\x08msg_type\x18\x01 \x01(\x0e\x32\x14.eraftpb.MessageType\x12\n\n\x02to\x18\x02 \x01(\x04\x12\x0c\n\x04\x66rom\x18\x03 \x01(\x04\x12\x0c\n\x04term\x18\x04 \x01(\x04\x12\x10\n\x08log_term\x18\x05 \x01(\x04\x12\r\n\x05index\x18\x06 \x01(\x04\x12\x1f\n\x07\x65ntries\x18\x07 \x03(\x0b\x32\x0e.eraftpb.Entry\x12\x0e\n\x06\x63ommit\x18\x08 \x01(\x04\x12#\n\x08snapshot\x18\t \x01(\x0b\x32\x11.eraftpb.Snapshot\x12\x0e\n\x06reject\x18\n \x01(\x08\x12\x13\n\x0breject_hint\x18\x0b \x01(\x04\x12\x0f\n\x07\x63ontext\x18\x0c \x01(\x0c\"7\n\tHardState\x12\x0c\n\x04term\x18\x01 \x01(\x04\x12\x0c\n\x04vote\x18\x02 \x01(\x04\x12\x0e\n\x06\x63ommit\x18\x03 \x01(\x04\"\x1a\n\tConfState\x12\r\n\x05nodes\x18\x01 \x03(\x04\"h\n\nConfChange\x12\n\n\x02id\x18\x01 \x01(\x04\x12,\n\x0b\x63hange_type\x18\x02 \x01(\x0e\x32\x17.eraftpb.ConfChangeType\x12\x0f\n\x07node_id\x18\x03 \x01(\x04\x12\x0f\n\x07\x63ontext\x18\x04 \x01(\x0c*1\n\tEntryType\x12\x0f\n\x0b\x45ntryNormal\x10\x00\x12\x13\n\x0f\x45ntryConfChange\x10\x01*\x8c\x03\n\x0bMessageType\x12\n\n\x06MsgHup\x10\x00\x12\x0b\n\x07MsgBeat\x10\x01\x12\x0e\n\nMsgPropose\x10\x02\x12\r\n\tMsgAppend\x10\x03\x12\x15\n\x11MsgAppendResponse\x10\x04\x12\x12\n\x0eMsgRequestVote\x10\x05\x12\x1a\n\x16MsgRequestVoteResponse\x10\x06\x12\x0f\n\x0bMsgSnapshot\x10\x07\x12\x10\n\x0cMsgHeartbeat\x10\x08\x12\x18\n\x14MsgHeartbeatResponse\x10\t\x12\x12\n\x0eMsgUnreachable\x10\n\x12\x11\n\rMsgSnapStatus\x10\x0b\x12\x12\n\x0eMsgCheckQuorum\x10\x0c\x12\x15\n\x11MsgTransferLeader\x10\r\x12\x11\n\rMsgTimeoutNow\x10\x0e\x12\x10\n\x0cMsgReadIndex\x10\x0f\x12\x14\n\x10MsgReadIndexResp\x10\x10\x12\x15\n\x11MsgRequestPreVote\x10\x11\x12\x1d\n\x19MsgRequestPreVoteResponse\x10\x12*-\n\x0e\x43onfChangeType\x12\x0b\n\x07\x41\x64\x64Node\x10\x00\x12\x0e\n\nRemoveNode\x10\x01')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -41,8 +41,8 @@ _ENTRYTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=778,
-  serialized_end=827,
+  serialized_start=734,
+  serialized_end=783,
 )
 _sym_db.RegisterEnumDescriptor(_ENTRYTYPE)
 
@@ -132,8 +132,8 @@ _MESSAGETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=830,
-  serialized_end=1226,
+  serialized_start=786,
+  serialized_end=1182,
 )
 _sym_db.RegisterEnumDescriptor(_MESSAGETYPE)
 
@@ -155,8 +155,8 @@ _CONFCHANGETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1228,
-  serialized_end=1273,
+  serialized_start=1184,
+  serialized_end=1229,
 )
 _sym_db.RegisterEnumDescriptor(_CONFCHANGETYPE)
 
@@ -222,27 +222,6 @@ _ENTRY = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    _descriptor.FieldDescriptor(
-      name='key', full_name='eraftpb.Entry.key', index=4,
-      number=5, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='offset', full_name='eraftpb.Entry.offset', index=5,
-      number=6, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='size', full_name='eraftpb.Entry.size', index=6,
-      number=7, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -255,8 +234,8 @@ _ENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27,
-  serialized_end=160,
+  serialized_start=26,
+  serialized_end=116,
 )
 
 
@@ -300,8 +279,8 @@ _SNAPSHOTMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=162,
-  serialized_end=249,
+  serialized_start=118,
+  serialized_end=205,
 )
 
 
@@ -338,8 +317,8 @@ _SNAPSHOT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=251,
-  serialized_end=320,
+  serialized_start=207,
+  serialized_end=276,
 )
 
 
@@ -446,8 +425,8 @@ _MESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=323,
-  serialized_end=585,
+  serialized_start=279,
+  serialized_end=541,
 )
 
 
@@ -491,8 +470,8 @@ _HARDSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=587,
-  serialized_end=642,
+  serialized_start=543,
+  serialized_end=598,
 )
 
 
@@ -522,8 +501,8 @@ _CONFSTATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=644,
-  serialized_end=670,
+  serialized_start=600,
+  serialized_end=626,
 )
 
 
@@ -574,8 +553,8 @@ _CONFCHANGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=672,
-  serialized_end=776,
+  serialized_start=628,
+  serialized_end=732,
 )
 
 _ENTRY.fields_by_name['entry_type'].enum_type = _ENTRYTYPE
