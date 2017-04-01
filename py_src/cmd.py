@@ -38,7 +38,7 @@ pd_header.cluster_id = 1024
 #     optional metapb.Peer leader     = 2;
 # }
 pd_get_region_req = pdpb_pb2.GetRegionByIDRequest()
-pd_get_region_req.region_id = 100
+pd_get_region_req.region_id = 2
 
 # enum CommandType {
 #     Invalid             = 0;
@@ -197,7 +197,7 @@ sk.connect(ip_port)
 
 for i in range(1, 1000):
 	header = raft_cmdpb_pb2.RaftRequestHeader()
-	header.region_id = 100
+	header.region_id = 2
 	header.peer.MergeFrom(peer)
 	header.uuid = uuid.uuid1().bytes
 	header.region_epoch.MergeFrom(region_epoch)

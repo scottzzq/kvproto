@@ -30,6 +30,7 @@ enum CommandType {
     ReportSplit         = 13;
     GetRegionByID       = 14;
     GetPDMembers        = 15;
+    AllocVolumeId       = 16;
 }
 
 message TsoRequest {
@@ -69,6 +70,14 @@ message AllocIdRequest {
 
 message AllocIdResponse {
     optional uint64 id             = 1 ;
+}
+
+message AllocVolumeIdRequest {
+
+}
+
+message AllocVolumeIdResponse {
+    optional uint64 id             = 1;
 }
 
 message GetStoreRequest {
@@ -262,6 +271,7 @@ message Request {
     optional ReportSplitRequest report_split                = 15;
     optional GetRegionByIDRequest get_region_by_id          = 16;
     optional GetPDMembersRequest get_pd_members             = 17;
+    optional AllocVolumeIdRequest alloc_volume_id           = 18;
 }
 
 message Response {
@@ -282,6 +292,7 @@ message Response {
     optional ReportSplitResponse report_split               = 15;
     optional GetRegionResponse get_region_by_id             = 16;
     optional GetPDMembersResponse get_pd_members            = 17;
+    optional AllocVolumeIdResponse alloc_volume_id          = 18;
 }
 
 message BootstrappedError {

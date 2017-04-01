@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='pdpb.proto',
   package='pdpb',
   syntax='proto2',
-  serialized_pb=_b('\n\npdpb.proto\x12\x04pdpb\x1a\x0cmetapb.proto\x1a\reraftpb.proto\"\"\n\x06Leader\x12\x0c\n\x04\x61\x64\x64r\x18\x01 \x01(\t\x12\n\n\x02id\x18\x03 \x01(\x04\"\x1b\n\nTsoRequest\x12\r\n\x05\x63ount\x18\x01 \x01(\r\".\n\tTimestamp\x12\x10\n\x08physical\x18\x01 \x01(\x03\x12\x0f\n\x07logical\x18\x02 \x01(\x03\"@\n\x0bTsoResponse\x12\r\n\x05\x63ount\x18\x01 \x01(\r\x12\"\n\ttimestamp\x18\x02 \x01(\x0b\x32\x0f.pdpb.Timestamp\"P\n\x10\x42ootstrapRequest\x12\x1c\n\x05store\x18\x01 \x01(\x0b\x32\r.metapb.Store\x12\x1e\n\x06region\x18\x02 \x01(\x0b\x32\x0e.metapb.Region\"\x13\n\x11\x42ootstrapResponse\"\x17\n\x15IsBootstrappedRequest\".\n\x16IsBootstrappedResponse\x12\x14\n\x0c\x62ootstrapped\x18\x01 \x01(\x08\"\x10\n\x0e\x41llocIdRequest\"\x1d\n\x0f\x41llocIdResponse\x12\n\n\x02id\x18\x01 \x01(\x04\"#\n\x0fGetStoreRequest\x12\x10\n\x08store_id\x18\x01 \x01(\x04\"0\n\x10GetStoreResponse\x12\x1c\n\x05store\x18\x01 \x01(\x0b\x32\r.metapb.Store\"&\n\x10GetRegionRequest\x12\x12\n\nregion_key\x18\x01 \x01(\x0c\"Q\n\x11GetRegionResponse\x12\x1e\n\x06region\x18\x01 \x01(\x0b\x32\x0e.metapb.Region\x12\x1c\n\x06leader\x18\x02 \x01(\x0b\x32\x0c.metapb.Peer\")\n\x14GetRegionByIDRequest\x12\x11\n\tregion_id\x18\x01 \x01(\x04\"\x19\n\x17GetClusterConfigRequest\"<\n\x18GetClusterConfigResponse\x12 \n\x07\x63luster\x18\x01 \x01(\x0b\x32\x0f.metapb.Cluster\"/\n\x0fPutStoreRequest\x12\x1c\n\x05store\x18\x01 \x01(\x0b\x32\r.metapb.Store\"\x12\n\x10PutStoreResponse\"@\n\x08PDMember\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x13\n\x0b\x63lient_urls\x18\x02 \x03(\t\x12\x11\n\tpeer_urls\x18\x03 \x03(\t\"\x15\n\x13GetPDMembersRequest\"7\n\x14GetPDMembersResponse\x12\x1f\n\x07members\x18\x01 \x03(\x0b\x32\x0e.pdpb.PDMember\"=\n\tPeerStats\x12\x1a\n\x04peer\x18\x01 \x01(\x0b\x32\x0c.metapb.Peer\x12\x14\n\x0c\x64own_seconds\x18\x02 \x01(\x04\"\xf4\x01\n\x16RegionHeartbeatRequest\x12\x1e\n\x06region\x18\x01 \x01(\x0b\x32\x0e.metapb.Region\x12\x1c\n\x06leader\x18\x02 \x01(\x0b\x32\x0c.metapb.Peer\x12#\n\ndown_peers\x18\x03 \x03(\x0b\x32\x0f.pdpb.PeerStats\x12#\n\rpending_peers\x18\x04 \x03(\x0b\x32\x0c.metapb.Peer\x12\x15\n\rbytes_written\x18\x05 \x01(\x04\x12\x12\n\nbytes_read\x18\x06 \x01(\x04\x12\x14\n\x0ckeys_written\x18\x07 \x01(\x04\x12\x11\n\tkeys_read\x18\x08 \x01(\x04\"V\n\nChangePeer\x12,\n\x0b\x63hange_type\x18\x01 \x01(\x0e\x32\x17.eraftpb.ConfChangeType\x12\x1a\n\x04peer\x18\x02 \x01(\x0b\x32\x0c.metapb.Peer\",\n\x0eTransferLeader\x12\x1a\n\x04peer\x18\x01 \x01(\x0b\x32\x0c.metapb.Peer\"o\n\x17RegionHeartbeatResponse\x12%\n\x0b\x63hange_peer\x18\x01 \x01(\x0b\x32\x10.pdpb.ChangePeer\x12-\n\x0ftransfer_leader\x18\x02 \x01(\x0b\x32\x14.pdpb.TransferLeader\";\n\x17PutClusterConfigRequest\x12 \n\x07\x63luster\x18\x01 \x01(\x0b\x32\x0f.metapb.Cluster\"\x1a\n\x18PutClusterConfigResponse\"1\n\x0f\x41skSplitRequest\x12\x1e\n\x06region\x18\x01 \x01(\x0b\x32\x0e.metapb.Region\"?\n\x10\x41skSplitResponse\x12\x15\n\rnew_region_id\x18\x01 \x01(\x04\x12\x14\n\x0cnew_peer_ids\x18\x02 \x03(\x04\"\xd5\x01\n\nStoreStats\x12\x10\n\x08store_id\x18\x01 \x01(\x04\x12\x10\n\x08\x63\x61pacity\x18\x02 \x01(\x04\x12\x11\n\tavailable\x18\x03 \x01(\x04\x12\x14\n\x0cregion_count\x18\x04 \x01(\r\x12\x1a\n\x12sending_snap_count\x18\x05 \x01(\r\x12\x1c\n\x14receiving_snap_count\x18\x06 \x01(\r\x12\x12\n\nstart_time\x18\x07 \x01(\r\x12\x1b\n\x13\x61pplying_snap_count\x18\x08 \x01(\r\x12\x0f\n\x07is_busy\x18\t \x01(\x08\"8\n\x15StoreHeartbeatRequest\x12\x1f\n\x05stats\x18\x01 \x01(\x0b\x32\x10.pdpb.StoreStats\"\x18\n\x16StoreHeartbeatResponse\"Q\n\x12ReportSplitRequest\x12\x1c\n\x04left\x18\x01 \x01(\x0b\x32\x0e.metapb.Region\x12\x1d\n\x05right\x18\x02 \x01(\x0b\x32\x0e.metapb.Region\"\x15\n\x13ReportSplitResponse\"1\n\rRequestHeader\x12\x0c\n\x04uuid\x18\x01 \x01(\x0c\x12\x12\n\ncluster_id\x18\x02 \x01(\x04\"N\n\x0eResponseHeader\x12\x0c\n\x04uuid\x18\x01 \x01(\x0c\x12\x12\n\ncluster_id\x18\x02 \x01(\x04\x12\x1a\n\x05\x65rror\x18\x03 \x01(\x0b\x32\x0b.pdpb.Error\"\xa2\x06\n\x07Request\x12#\n\x06header\x18\x01 \x01(\x0b\x32\x13.pdpb.RequestHeader\x12#\n\x08\x63md_type\x18\x02 \x01(\x0e\x32\x11.pdpb.CommandType\x12\x1d\n\x03tso\x18\x03 \x01(\x0b\x32\x10.pdpb.TsoRequest\x12)\n\tbootstrap\x18\x04 \x01(\x0b\x32\x16.pdpb.BootstrapRequest\x12\x34\n\x0fis_bootstrapped\x18\x05 \x01(\x0b\x32\x1b.pdpb.IsBootstrappedRequest\x12&\n\x08\x61lloc_id\x18\x06 \x01(\x0b\x32\x14.pdpb.AllocIdRequest\x12(\n\tget_store\x18\x07 \x01(\x0b\x32\x15.pdpb.GetStoreRequest\x12(\n\tput_store\x18\x08 \x01(\x0b\x32\x15.pdpb.PutStoreRequest\x12(\n\task_split\x18\t \x01(\x0b\x32\x15.pdpb.AskSplitRequest\x12*\n\nget_region\x18\n \x01(\x0b\x32\x16.pdpb.GetRegionRequest\x12\x36\n\x10region_heartbeat\x18\x0b \x01(\x0b\x32\x1c.pdpb.RegionHeartbeatRequest\x12\x39\n\x12get_cluster_config\x18\x0c \x01(\x0b\x32\x1d.pdpb.GetClusterConfigRequest\x12\x39\n\x12put_cluster_config\x18\r \x01(\x0b\x32\x1d.pdpb.PutClusterConfigRequest\x12\x34\n\x0fstore_heartbeat\x18\x0e \x01(\x0b\x32\x1b.pdpb.StoreHeartbeatRequest\x12.\n\x0creport_split\x18\x0f \x01(\x0b\x32\x18.pdpb.ReportSplitRequest\x12\x34\n\x10get_region_by_id\x18\x10 \x01(\x0b\x32\x1a.pdpb.GetRegionByIDRequest\x12\x31\n\x0eget_pd_members\x18\x11 \x01(\x0b\x32\x19.pdpb.GetPDMembersRequest\"\xaf\x06\n\x08Response\x12$\n\x06header\x18\x01 \x01(\x0b\x32\x14.pdpb.ResponseHeader\x12#\n\x08\x63md_type\x18\x02 \x01(\x0e\x32\x11.pdpb.CommandType\x12\x1e\n\x03tso\x18\x03 \x01(\x0b\x32\x11.pdpb.TsoResponse\x12*\n\tbootstrap\x18\x04 \x01(\x0b\x32\x17.pdpb.BootstrapResponse\x12\x35\n\x0fis_bootstrapped\x18\x05 \x01(\x0b\x32\x1c.pdpb.IsBootstrappedResponse\x12\'\n\x08\x61lloc_id\x18\x06 \x01(\x0b\x32\x15.pdpb.AllocIdResponse\x12)\n\tget_store\x18\x07 \x01(\x0b\x32\x16.pdpb.GetStoreResponse\x12)\n\tput_store\x18\x08 \x01(\x0b\x32\x16.pdpb.PutStoreResponse\x12)\n\task_split\x18\t \x01(\x0b\x32\x16.pdpb.AskSplitResponse\x12+\n\nget_region\x18\n \x01(\x0b\x32\x17.pdpb.GetRegionResponse\x12\x37\n\x10region_heartbeat\x18\x0b \x01(\x0b\x32\x1d.pdpb.RegionHeartbeatResponse\x12:\n\x12get_cluster_config\x18\x0c \x01(\x0b\x32\x1e.pdpb.GetClusterConfigResponse\x12:\n\x12put_cluster_config\x18\r \x01(\x0b\x32\x1e.pdpb.PutClusterConfigResponse\x12\x35\n\x0fstore_heartbeat\x18\x0e \x01(\x0b\x32\x1c.pdpb.StoreHeartbeatResponse\x12/\n\x0creport_split\x18\x0f \x01(\x0b\x32\x19.pdpb.ReportSplitResponse\x12\x31\n\x10get_region_by_id\x18\x10 \x01(\x0b\x32\x17.pdpb.GetRegionResponse\x12\x32\n\x0eget_pd_members\x18\x11 \x01(\x0b\x32\x1a.pdpb.GetPDMembersResponse\"\x13\n\x11\x42ootstrappedError\"\x17\n\x15StoreIsTombstoneError\"z\n\x05\x45rror\x12\x0f\n\x07message\x18\x01 \x01(\t\x12-\n\x0c\x62ootstrapped\x18\x02 \x01(\x0b\x32\x17.pdpb.BootstrappedError\x12\x31\n\x0cis_tombstone\x18\x03 \x01(\x0b\x32\x1b.pdpb.StoreIsTombstoneError*\x97\x02\n\x0b\x43ommandType\x12\x0b\n\x07Invalid\x10\x00\x12\x07\n\x03Tso\x10\x01\x12\r\n\tBootstrap\x10\x02\x12\x12\n\x0eIsBootstrapped\x10\x03\x12\x0b\n\x07\x41llocId\x10\x04\x12\x0c\n\x08GetStore\x10\x05\x12\x0c\n\x08PutStore\x10\x06\x12\x0c\n\x08\x41skSplit\x10\x07\x12\r\n\tGetRegion\x10\x08\x12\x13\n\x0fRegionHeartbeat\x10\t\x12\x14\n\x10GetClusterConfig\x10\n\x12\x14\n\x10PutClusterConfig\x10\x0b\x12\x12\n\x0eStoreHeartbeat\x10\x0c\x12\x0f\n\x0bReportSplit\x10\r\x12\x11\n\rGetRegionByID\x10\x0e\x12\x10\n\x0cGetPDMembers\x10\x0f')
+  serialized_pb=_b('\n\npdpb.proto\x12\x04pdpb\x1a\x0cmetapb.proto\x1a\reraftpb.proto\"\"\n\x06Leader\x12\x0c\n\x04\x61\x64\x64r\x18\x01 \x01(\t\x12\n\n\x02id\x18\x03 \x01(\x04\"\x1b\n\nTsoRequest\x12\r\n\x05\x63ount\x18\x01 \x01(\r\".\n\tTimestamp\x12\x10\n\x08physical\x18\x01 \x01(\x03\x12\x0f\n\x07logical\x18\x02 \x01(\x03\"@\n\x0bTsoResponse\x12\r\n\x05\x63ount\x18\x01 \x01(\r\x12\"\n\ttimestamp\x18\x02 \x01(\x0b\x32\x0f.pdpb.Timestamp\"P\n\x10\x42ootstrapRequest\x12\x1c\n\x05store\x18\x01 \x01(\x0b\x32\r.metapb.Store\x12\x1e\n\x06region\x18\x02 \x01(\x0b\x32\x0e.metapb.Region\"\x13\n\x11\x42ootstrapResponse\"\x17\n\x15IsBootstrappedRequest\".\n\x16IsBootstrappedResponse\x12\x14\n\x0c\x62ootstrapped\x18\x01 \x01(\x08\"\x10\n\x0e\x41llocIdRequest\"\x1d\n\x0f\x41llocIdResponse\x12\n\n\x02id\x18\x01 \x01(\x04\"\x16\n\x14\x41llocVolumeIdRequest\"#\n\x15\x41llocVolumeIdResponse\x12\n\n\x02id\x18\x01 \x01(\x04\"#\n\x0fGetStoreRequest\x12\x10\n\x08store_id\x18\x01 \x01(\x04\"0\n\x10GetStoreResponse\x12\x1c\n\x05store\x18\x01 \x01(\x0b\x32\r.metapb.Store\"&\n\x10GetRegionRequest\x12\x12\n\nregion_key\x18\x01 \x01(\x0c\"Q\n\x11GetRegionResponse\x12\x1e\n\x06region\x18\x01 \x01(\x0b\x32\x0e.metapb.Region\x12\x1c\n\x06leader\x18\x02 \x01(\x0b\x32\x0c.metapb.Peer\")\n\x14GetRegionByIDRequest\x12\x11\n\tregion_id\x18\x01 \x01(\x04\"\x19\n\x17GetClusterConfigRequest\"<\n\x18GetClusterConfigResponse\x12 \n\x07\x63luster\x18\x01 \x01(\x0b\x32\x0f.metapb.Cluster\"/\n\x0fPutStoreRequest\x12\x1c\n\x05store\x18\x01 \x01(\x0b\x32\r.metapb.Store\"\x12\n\x10PutStoreResponse\"@\n\x08PDMember\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x13\n\x0b\x63lient_urls\x18\x02 \x03(\t\x12\x11\n\tpeer_urls\x18\x03 \x03(\t\"\x15\n\x13GetPDMembersRequest\"7\n\x14GetPDMembersResponse\x12\x1f\n\x07members\x18\x01 \x03(\x0b\x32\x0e.pdpb.PDMember\"=\n\tPeerStats\x12\x1a\n\x04peer\x18\x01 \x01(\x0b\x32\x0c.metapb.Peer\x12\x14\n\x0c\x64own_seconds\x18\x02 \x01(\x04\"\xf4\x01\n\x16RegionHeartbeatRequest\x12\x1e\n\x06region\x18\x01 \x01(\x0b\x32\x0e.metapb.Region\x12\x1c\n\x06leader\x18\x02 \x01(\x0b\x32\x0c.metapb.Peer\x12#\n\ndown_peers\x18\x03 \x03(\x0b\x32\x0f.pdpb.PeerStats\x12#\n\rpending_peers\x18\x04 \x03(\x0b\x32\x0c.metapb.Peer\x12\x15\n\rbytes_written\x18\x05 \x01(\x04\x12\x12\n\nbytes_read\x18\x06 \x01(\x04\x12\x14\n\x0ckeys_written\x18\x07 \x01(\x04\x12\x11\n\tkeys_read\x18\x08 \x01(\x04\"V\n\nChangePeer\x12,\n\x0b\x63hange_type\x18\x01 \x01(\x0e\x32\x17.eraftpb.ConfChangeType\x12\x1a\n\x04peer\x18\x02 \x01(\x0b\x32\x0c.metapb.Peer\",\n\x0eTransferLeader\x12\x1a\n\x04peer\x18\x01 \x01(\x0b\x32\x0c.metapb.Peer\"o\n\x17RegionHeartbeatResponse\x12%\n\x0b\x63hange_peer\x18\x01 \x01(\x0b\x32\x10.pdpb.ChangePeer\x12-\n\x0ftransfer_leader\x18\x02 \x01(\x0b\x32\x14.pdpb.TransferLeader\";\n\x17PutClusterConfigRequest\x12 \n\x07\x63luster\x18\x01 \x01(\x0b\x32\x0f.metapb.Cluster\"\x1a\n\x18PutClusterConfigResponse\"1\n\x0f\x41skSplitRequest\x12\x1e\n\x06region\x18\x01 \x01(\x0b\x32\x0e.metapb.Region\"?\n\x10\x41skSplitResponse\x12\x15\n\rnew_region_id\x18\x01 \x01(\x04\x12\x14\n\x0cnew_peer_ids\x18\x02 \x03(\x04\"\xd5\x01\n\nStoreStats\x12\x10\n\x08store_id\x18\x01 \x01(\x04\x12\x10\n\x08\x63\x61pacity\x18\x02 \x01(\x04\x12\x11\n\tavailable\x18\x03 \x01(\x04\x12\x14\n\x0cregion_count\x18\x04 \x01(\r\x12\x1a\n\x12sending_snap_count\x18\x05 \x01(\r\x12\x1c\n\x14receiving_snap_count\x18\x06 \x01(\r\x12\x12\n\nstart_time\x18\x07 \x01(\r\x12\x1b\n\x13\x61pplying_snap_count\x18\x08 \x01(\r\x12\x0f\n\x07is_busy\x18\t \x01(\x08\"8\n\x15StoreHeartbeatRequest\x12\x1f\n\x05stats\x18\x01 \x01(\x0b\x32\x10.pdpb.StoreStats\"\x18\n\x16StoreHeartbeatResponse\"Q\n\x12ReportSplitRequest\x12\x1c\n\x04left\x18\x01 \x01(\x0b\x32\x0e.metapb.Region\x12\x1d\n\x05right\x18\x02 \x01(\x0b\x32\x0e.metapb.Region\"\x15\n\x13ReportSplitResponse\"1\n\rRequestHeader\x12\x0c\n\x04uuid\x18\x01 \x01(\x0c\x12\x12\n\ncluster_id\x18\x02 \x01(\x04\"N\n\x0eResponseHeader\x12\x0c\n\x04uuid\x18\x01 \x01(\x0c\x12\x12\n\ncluster_id\x18\x02 \x01(\x04\x12\x1a\n\x05\x65rror\x18\x03 \x01(\x0b\x32\x0b.pdpb.Error\"\xd7\x06\n\x07Request\x12#\n\x06header\x18\x01 \x01(\x0b\x32\x13.pdpb.RequestHeader\x12#\n\x08\x63md_type\x18\x02 \x01(\x0e\x32\x11.pdpb.CommandType\x12\x1d\n\x03tso\x18\x03 \x01(\x0b\x32\x10.pdpb.TsoRequest\x12)\n\tbootstrap\x18\x04 \x01(\x0b\x32\x16.pdpb.BootstrapRequest\x12\x34\n\x0fis_bootstrapped\x18\x05 \x01(\x0b\x32\x1b.pdpb.IsBootstrappedRequest\x12&\n\x08\x61lloc_id\x18\x06 \x01(\x0b\x32\x14.pdpb.AllocIdRequest\x12(\n\tget_store\x18\x07 \x01(\x0b\x32\x15.pdpb.GetStoreRequest\x12(\n\tput_store\x18\x08 \x01(\x0b\x32\x15.pdpb.PutStoreRequest\x12(\n\task_split\x18\t \x01(\x0b\x32\x15.pdpb.AskSplitRequest\x12*\n\nget_region\x18\n \x01(\x0b\x32\x16.pdpb.GetRegionRequest\x12\x36\n\x10region_heartbeat\x18\x0b \x01(\x0b\x32\x1c.pdpb.RegionHeartbeatRequest\x12\x39\n\x12get_cluster_config\x18\x0c \x01(\x0b\x32\x1d.pdpb.GetClusterConfigRequest\x12\x39\n\x12put_cluster_config\x18\r \x01(\x0b\x32\x1d.pdpb.PutClusterConfigRequest\x12\x34\n\x0fstore_heartbeat\x18\x0e \x01(\x0b\x32\x1b.pdpb.StoreHeartbeatRequest\x12.\n\x0creport_split\x18\x0f \x01(\x0b\x32\x18.pdpb.ReportSplitRequest\x12\x34\n\x10get_region_by_id\x18\x10 \x01(\x0b\x32\x1a.pdpb.GetRegionByIDRequest\x12\x31\n\x0eget_pd_members\x18\x11 \x01(\x0b\x32\x19.pdpb.GetPDMembersRequest\x12\x33\n\x0f\x61lloc_volume_id\x18\x12 \x01(\x0b\x32\x1a.pdpb.AllocVolumeIdRequest\"\xe5\x06\n\x08Response\x12$\n\x06header\x18\x01 \x01(\x0b\x32\x14.pdpb.ResponseHeader\x12#\n\x08\x63md_type\x18\x02 \x01(\x0e\x32\x11.pdpb.CommandType\x12\x1e\n\x03tso\x18\x03 \x01(\x0b\x32\x11.pdpb.TsoResponse\x12*\n\tbootstrap\x18\x04 \x01(\x0b\x32\x17.pdpb.BootstrapResponse\x12\x35\n\x0fis_bootstrapped\x18\x05 \x01(\x0b\x32\x1c.pdpb.IsBootstrappedResponse\x12\'\n\x08\x61lloc_id\x18\x06 \x01(\x0b\x32\x15.pdpb.AllocIdResponse\x12)\n\tget_store\x18\x07 \x01(\x0b\x32\x16.pdpb.GetStoreResponse\x12)\n\tput_store\x18\x08 \x01(\x0b\x32\x16.pdpb.PutStoreResponse\x12)\n\task_split\x18\t \x01(\x0b\x32\x16.pdpb.AskSplitResponse\x12+\n\nget_region\x18\n \x01(\x0b\x32\x17.pdpb.GetRegionResponse\x12\x37\n\x10region_heartbeat\x18\x0b \x01(\x0b\x32\x1d.pdpb.RegionHeartbeatResponse\x12:\n\x12get_cluster_config\x18\x0c \x01(\x0b\x32\x1e.pdpb.GetClusterConfigResponse\x12:\n\x12put_cluster_config\x18\r \x01(\x0b\x32\x1e.pdpb.PutClusterConfigResponse\x12\x35\n\x0fstore_heartbeat\x18\x0e \x01(\x0b\x32\x1c.pdpb.StoreHeartbeatResponse\x12/\n\x0creport_split\x18\x0f \x01(\x0b\x32\x19.pdpb.ReportSplitResponse\x12\x31\n\x10get_region_by_id\x18\x10 \x01(\x0b\x32\x17.pdpb.GetRegionResponse\x12\x32\n\x0eget_pd_members\x18\x11 \x01(\x0b\x32\x1a.pdpb.GetPDMembersResponse\x12\x34\n\x0f\x61lloc_volume_id\x18\x12 \x01(\x0b\x32\x1b.pdpb.AllocVolumeIdResponse\"\x13\n\x11\x42ootstrappedError\"\x17\n\x15StoreIsTombstoneError\"z\n\x05\x45rror\x12\x0f\n\x07message\x18\x01 \x01(\t\x12-\n\x0c\x62ootstrapped\x18\x02 \x01(\x0b\x32\x17.pdpb.BootstrappedError\x12\x31\n\x0cis_tombstone\x18\x03 \x01(\x0b\x32\x1b.pdpb.StoreIsTombstoneError*\xaa\x02\n\x0b\x43ommandType\x12\x0b\n\x07Invalid\x10\x00\x12\x07\n\x03Tso\x10\x01\x12\r\n\tBootstrap\x10\x02\x12\x12\n\x0eIsBootstrapped\x10\x03\x12\x0b\n\x07\x41llocId\x10\x04\x12\x0c\n\x08GetStore\x10\x05\x12\x0c\n\x08PutStore\x10\x06\x12\x0c\n\x08\x41skSplit\x10\x07\x12\r\n\tGetRegion\x10\x08\x12\x13\n\x0fRegionHeartbeat\x10\t\x12\x14\n\x10GetClusterConfig\x10\n\x12\x14\n\x10PutClusterConfig\x10\x0b\x12\x12\n\x0eStoreHeartbeat\x10\x0c\x12\x0f\n\x0bReportSplit\x10\r\x12\x11\n\rGetRegionByID\x10\x0e\x12\x10\n\x0cGetPDMembers\x10\x0f\x12\x11\n\rAllocVolumeId\x10\x10')
   ,
   dependencies=[metapb__pb2.DESCRIPTOR,eraftpb__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -97,11 +97,15 @@ _COMMANDTYPE = _descriptor.EnumDescriptor(
       name='GetPDMembers', index=15, number=15,
       options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='AllocVolumeId', index=16, number=16,
+      options=None,
+      type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=4103,
-  serialized_end=4382,
+  serialized_start=4271,
+  serialized_end=4569,
 )
 _sym_db.RegisterEnumDescriptor(_COMMANDTYPE)
 
@@ -122,6 +126,7 @@ StoreHeartbeat = 12
 ReportSplit = 13
 GetRegionByID = 14
 GetPDMembers = 15
+AllocVolumeId = 16
 
 
 
@@ -442,6 +447,61 @@ _ALLOCIDRESPONSE = _descriptor.Descriptor(
 )
 
 
+_ALLOCVOLUMEIDREQUEST = _descriptor.Descriptor(
+  name='AllocVolumeIdRequest',
+  full_name='pdpb.AllocVolumeIdRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=453,
+  serialized_end=475,
+)
+
+
+_ALLOCVOLUMEIDRESPONSE = _descriptor.Descriptor(
+  name='AllocVolumeIdResponse',
+  full_name='pdpb.AllocVolumeIdResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='pdpb.AllocVolumeIdResponse.id', index=0,
+      number=1, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=477,
+  serialized_end=512,
+)
+
+
 _GETSTOREREQUEST = _descriptor.Descriptor(
   name='GetStoreRequest',
   full_name='pdpb.GetStoreRequest',
@@ -468,8 +528,8 @@ _GETSTOREREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=453,
-  serialized_end=488,
+  serialized_start=514,
+  serialized_end=549,
 )
 
 
@@ -499,8 +559,8 @@ _GETSTORERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=490,
-  serialized_end=538,
+  serialized_start=551,
+  serialized_end=599,
 )
 
 
@@ -530,8 +590,8 @@ _GETREGIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=540,
-  serialized_end=578,
+  serialized_start=601,
+  serialized_end=639,
 )
 
 
@@ -568,8 +628,8 @@ _GETREGIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=580,
-  serialized_end=661,
+  serialized_start=641,
+  serialized_end=722,
 )
 
 
@@ -599,8 +659,8 @@ _GETREGIONBYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=663,
-  serialized_end=704,
+  serialized_start=724,
+  serialized_end=765,
 )
 
 
@@ -623,8 +683,8 @@ _GETCLUSTERCONFIGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=706,
-  serialized_end=731,
+  serialized_start=767,
+  serialized_end=792,
 )
 
 
@@ -654,8 +714,8 @@ _GETCLUSTERCONFIGRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=733,
-  serialized_end=793,
+  serialized_start=794,
+  serialized_end=854,
 )
 
 
@@ -685,8 +745,8 @@ _PUTSTOREREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=795,
-  serialized_end=842,
+  serialized_start=856,
+  serialized_end=903,
 )
 
 
@@ -709,8 +769,8 @@ _PUTSTORERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=844,
-  serialized_end=862,
+  serialized_start=905,
+  serialized_end=923,
 )
 
 
@@ -754,8 +814,8 @@ _PDMEMBER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=864,
-  serialized_end=928,
+  serialized_start=925,
+  serialized_end=989,
 )
 
 
@@ -778,8 +838,8 @@ _GETPDMEMBERSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=930,
-  serialized_end=951,
+  serialized_start=991,
+  serialized_end=1012,
 )
 
 
@@ -809,8 +869,8 @@ _GETPDMEMBERSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=953,
-  serialized_end=1008,
+  serialized_start=1014,
+  serialized_end=1069,
 )
 
 
@@ -847,8 +907,8 @@ _PEERSTATS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1010,
-  serialized_end=1071,
+  serialized_start=1071,
+  serialized_end=1132,
 )
 
 
@@ -927,8 +987,8 @@ _REGIONHEARTBEATREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1074,
-  serialized_end=1318,
+  serialized_start=1135,
+  serialized_end=1379,
 )
 
 
@@ -965,8 +1025,8 @@ _CHANGEPEER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1320,
-  serialized_end=1406,
+  serialized_start=1381,
+  serialized_end=1467,
 )
 
 
@@ -996,8 +1056,8 @@ _TRANSFERLEADER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1408,
-  serialized_end=1452,
+  serialized_start=1469,
+  serialized_end=1513,
 )
 
 
@@ -1034,8 +1094,8 @@ _REGIONHEARTBEATRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1454,
-  serialized_end=1565,
+  serialized_start=1515,
+  serialized_end=1626,
 )
 
 
@@ -1065,8 +1125,8 @@ _PUTCLUSTERCONFIGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1567,
-  serialized_end=1626,
+  serialized_start=1628,
+  serialized_end=1687,
 )
 
 
@@ -1089,8 +1149,8 @@ _PUTCLUSTERCONFIGRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1628,
-  serialized_end=1654,
+  serialized_start=1689,
+  serialized_end=1715,
 )
 
 
@@ -1120,8 +1180,8 @@ _ASKSPLITREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1656,
-  serialized_end=1705,
+  serialized_start=1717,
+  serialized_end=1766,
 )
 
 
@@ -1158,8 +1218,8 @@ _ASKSPLITRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1707,
-  serialized_end=1770,
+  serialized_start=1768,
+  serialized_end=1831,
 )
 
 
@@ -1245,8 +1305,8 @@ _STORESTATS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1773,
-  serialized_end=1986,
+  serialized_start=1834,
+  serialized_end=2047,
 )
 
 
@@ -1276,8 +1336,8 @@ _STOREHEARTBEATREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1988,
-  serialized_end=2044,
+  serialized_start=2049,
+  serialized_end=2105,
 )
 
 
@@ -1300,8 +1360,8 @@ _STOREHEARTBEATRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2046,
-  serialized_end=2070,
+  serialized_start=2107,
+  serialized_end=2131,
 )
 
 
@@ -1338,8 +1398,8 @@ _REPORTSPLITREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2072,
-  serialized_end=2153,
+  serialized_start=2133,
+  serialized_end=2214,
 )
 
 
@@ -1362,8 +1422,8 @@ _REPORTSPLITRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2155,
-  serialized_end=2176,
+  serialized_start=2216,
+  serialized_end=2237,
 )
 
 
@@ -1400,8 +1460,8 @@ _REQUESTHEADER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2178,
-  serialized_end=2227,
+  serialized_start=2239,
+  serialized_end=2288,
 )
 
 
@@ -1445,8 +1505,8 @@ _RESPONSEHEADER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2229,
-  serialized_end=2307,
+  serialized_start=2290,
+  serialized_end=2368,
 )
 
 
@@ -1576,6 +1636,13 @@ _REQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='alloc_volume_id', full_name='pdpb.Request.alloc_volume_id', index=17,
+      number=18, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -1588,8 +1655,8 @@ _REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2310,
-  serialized_end=3112,
+  serialized_start=2371,
+  serialized_end=3226,
 )
 
 
@@ -1719,6 +1786,13 @@ _RESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='alloc_volume_id', full_name='pdpb.Response.alloc_volume_id', index=17,
+      number=18, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -1731,8 +1805,8 @@ _RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3115,
-  serialized_end=3930,
+  serialized_start=3229,
+  serialized_end=4098,
 )
 
 
@@ -1755,8 +1829,8 @@ _BOOTSTRAPPEDERROR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3932,
-  serialized_end=3951,
+  serialized_start=4100,
+  serialized_end=4119,
 )
 
 
@@ -1779,8 +1853,8 @@ _STOREISTOMBSTONEERROR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3953,
-  serialized_end=3976,
+  serialized_start=4121,
+  serialized_end=4144,
 )
 
 
@@ -1824,8 +1898,8 @@ _ERROR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3978,
-  serialized_end=4100,
+  serialized_start=4146,
+  serialized_end=4268,
 )
 
 _TSORESPONSE.fields_by_name['timestamp'].message_type = _TIMESTAMP
@@ -1870,6 +1944,7 @@ _REQUEST.fields_by_name['store_heartbeat'].message_type = _STOREHEARTBEATREQUEST
 _REQUEST.fields_by_name['report_split'].message_type = _REPORTSPLITREQUEST
 _REQUEST.fields_by_name['get_region_by_id'].message_type = _GETREGIONBYIDREQUEST
 _REQUEST.fields_by_name['get_pd_members'].message_type = _GETPDMEMBERSREQUEST
+_REQUEST.fields_by_name['alloc_volume_id'].message_type = _ALLOCVOLUMEIDREQUEST
 _RESPONSE.fields_by_name['header'].message_type = _RESPONSEHEADER
 _RESPONSE.fields_by_name['cmd_type'].enum_type = _COMMANDTYPE
 _RESPONSE.fields_by_name['tso'].message_type = _TSORESPONSE
@@ -1887,6 +1962,7 @@ _RESPONSE.fields_by_name['store_heartbeat'].message_type = _STOREHEARTBEATRESPON
 _RESPONSE.fields_by_name['report_split'].message_type = _REPORTSPLITRESPONSE
 _RESPONSE.fields_by_name['get_region_by_id'].message_type = _GETREGIONRESPONSE
 _RESPONSE.fields_by_name['get_pd_members'].message_type = _GETPDMEMBERSRESPONSE
+_RESPONSE.fields_by_name['alloc_volume_id'].message_type = _ALLOCVOLUMEIDRESPONSE
 _ERROR.fields_by_name['bootstrapped'].message_type = _BOOTSTRAPPEDERROR
 _ERROR.fields_by_name['is_tombstone'].message_type = _STOREISTOMBSTONEERROR
 DESCRIPTOR.message_types_by_name['Leader'] = _LEADER
@@ -1899,6 +1975,8 @@ DESCRIPTOR.message_types_by_name['IsBootstrappedRequest'] = _ISBOOTSTRAPPEDREQUE
 DESCRIPTOR.message_types_by_name['IsBootstrappedResponse'] = _ISBOOTSTRAPPEDRESPONSE
 DESCRIPTOR.message_types_by_name['AllocIdRequest'] = _ALLOCIDREQUEST
 DESCRIPTOR.message_types_by_name['AllocIdResponse'] = _ALLOCIDRESPONSE
+DESCRIPTOR.message_types_by_name['AllocVolumeIdRequest'] = _ALLOCVOLUMEIDREQUEST
+DESCRIPTOR.message_types_by_name['AllocVolumeIdResponse'] = _ALLOCVOLUMEIDRESPONSE
 DESCRIPTOR.message_types_by_name['GetStoreRequest'] = _GETSTOREREQUEST
 DESCRIPTOR.message_types_by_name['GetStoreResponse'] = _GETSTORERESPONSE
 DESCRIPTOR.message_types_by_name['GetRegionRequest'] = _GETREGIONREQUEST
@@ -2003,6 +2081,20 @@ AllocIdResponse = _reflection.GeneratedProtocolMessageType('AllocIdResponse', (_
   # @@protoc_insertion_point(class_scope:pdpb.AllocIdResponse)
   ))
 _sym_db.RegisterMessage(AllocIdResponse)
+
+AllocVolumeIdRequest = _reflection.GeneratedProtocolMessageType('AllocVolumeIdRequest', (_message.Message,), dict(
+  DESCRIPTOR = _ALLOCVOLUMEIDREQUEST,
+  __module__ = 'pdpb_pb2'
+  # @@protoc_insertion_point(class_scope:pdpb.AllocVolumeIdRequest)
+  ))
+_sym_db.RegisterMessage(AllocVolumeIdRequest)
+
+AllocVolumeIdResponse = _reflection.GeneratedProtocolMessageType('AllocVolumeIdResponse', (_message.Message,), dict(
+  DESCRIPTOR = _ALLOCVOLUMEIDRESPONSE,
+  __module__ = 'pdpb_pb2'
+  # @@protoc_insertion_point(class_scope:pdpb.AllocVolumeIdResponse)
+  ))
+_sym_db.RegisterMessage(AllocVolumeIdResponse)
 
 GetStoreRequest = _reflection.GeneratedProtocolMessageType('GetStoreRequest', (_message.Message,), dict(
   DESCRIPTOR = _GETSTOREREQUEST,
