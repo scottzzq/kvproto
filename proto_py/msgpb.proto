@@ -5,6 +5,7 @@ import "raft_cmdpb.proto";
 import "raft_serverpb.proto";
 import "kvrpcpb.proto";
 import "coprocessor.proto";
+import "volume_cmdpb.proto";
 import "pdpb.proto";
 
 
@@ -19,6 +20,8 @@ enum MessageType {
     CopResp      = 7;
     PdReq        = 8;
     PdResp       = 9;
+    VolumeReq       = 10;
+    VolumeResp      = 11;
 }
 
 // Message holds all messages communicating with TiKV.
@@ -33,4 +36,6 @@ message Message {
     optional coprocessor.Response        cop_resp  = 8;
     optional pdpb.Request                pd_req    = 9;
     optional pdpb.Response               pd_resp   = 10;
+    optional volume_cmdpb.Request        volume_req     = 11;
+    optional volume_cmdpb.Response       volume_resp    = 12;
 }
