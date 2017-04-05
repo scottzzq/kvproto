@@ -10,7 +10,6 @@ import "pdpb.proto";
 
 
 enum MessageType {
-    None         = 0;
     Cmd          = 1;
     CmdResp      = 2;
     Raft         = 3;
