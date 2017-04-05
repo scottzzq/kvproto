@@ -26,7 +26,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='msgpb.proto',
   package='msgpb',
   syntax='proto2',
-  serialized_pb=_b('\n\x0bmsgpb.proto\x12\x05msgpb\x1a\x10raft_cmdpb.proto\x1a\x13raft_serverpb.proto\x1a\rkvrpcpb.proto\x1a\x11\x63oprocessor.proto\x1a\x12volume_cmdpb.proto\x1a\npdpb.proto\"\xe3\x03\n\x07Message\x12$\n\x08msg_type\x18\x01 \x01(\x0e\x32\x12.msgpb.MessageType\x12+\n\x07\x63md_req\x18\x02 \x01(\x0b\x32\x1a.raft_cmdpb.RaftCmdRequest\x12-\n\x08\x63md_resp\x18\x03 \x01(\x0b\x32\x1b.raft_cmdpb.RaftCmdResponse\x12(\n\x04raft\x18\x04 \x01(\x0b\x32\x1a.raft_serverpb.RaftMessage\x12 \n\x06kv_req\x18\x05 \x01(\x0b\x32\x10.kvrpcpb.Request\x12\"\n\x07kv_resp\x18\x06 \x01(\x0b\x32\x11.kvrpcpb.Response\x12%\n\x07\x63op_req\x18\x07 \x01(\x0b\x32\x14.coprocessor.Request\x12\'\n\x08\x63op_resp\x18\x08 \x01(\x0b\x32\x15.coprocessor.Response\x12\x1d\n\x06pd_req\x18\t \x01(\x0b\x32\r.pdpb.Request\x12\x1f\n\x07pd_resp\x18\n \x01(\x0b\x32\x0e.pdpb.Response\x12)\n\nvolume_req\x18\x0b \x01(\x0b\x32\x15.volume_cmdpb.Request\x12+\n\x0bvolume_resp\x18\x0c \x01(\x0b\x32\x16.volume_cmdpb.Response*\x9d\x01\n\x0bMessageType\x12\x08\n\x04None\x10\x00\x12\x07\n\x03\x43md\x10\x01\x12\x0b\n\x07\x43mdResp\x10\x02\x12\x08\n\x04Raft\x10\x03\x12\t\n\x05KvReq\x10\x04\x12\n\n\x06KvResp\x10\x05\x12\n\n\x06\x43opReq\x10\x06\x12\x0b\n\x07\x43opResp\x10\x07\x12\t\n\x05PdReq\x10\x08\x12\n\n\x06PdResp\x10\t\x12\r\n\tVolumeReq\x10\n\x12\x0e\n\nVolumeResp\x10\x0b')
+  serialized_pb=_b('\n\x0bmsgpb.proto\x12\x05msgpb\x1a\x10raft_cmdpb.proto\x1a\x13raft_serverpb.proto\x1a\rkvrpcpb.proto\x1a\x11\x63oprocessor.proto\x1a\x12volume_cmdpb.proto\x1a\npdpb.proto\"\xe3\x03\n\x07Message\x12$\n\x08msg_type\x18\x01 \x01(\x0e\x32\x12.msgpb.MessageType\x12+\n\x07\x63md_req\x18\x02 \x01(\x0b\x32\x1a.raft_cmdpb.RaftCmdRequest\x12-\n\x08\x63md_resp\x18\x03 \x01(\x0b\x32\x1b.raft_cmdpb.RaftCmdResponse\x12(\n\x04raft\x18\x04 \x01(\x0b\x32\x1a.raft_serverpb.RaftMessage\x12 \n\x06kv_req\x18\x05 \x01(\x0b\x32\x10.kvrpcpb.Request\x12\"\n\x07kv_resp\x18\x06 \x01(\x0b\x32\x11.kvrpcpb.Response\x12%\n\x07\x63op_req\x18\x07 \x01(\x0b\x32\x14.coprocessor.Request\x12\'\n\x08\x63op_resp\x18\x08 \x01(\x0b\x32\x15.coprocessor.Response\x12\x1d\n\x06pd_req\x18\t \x01(\x0b\x32\r.pdpb.Request\x12\x1f\n\x07pd_resp\x18\n \x01(\x0b\x32\x0e.pdpb.Response\x12)\n\nvolume_req\x18\x0b \x01(\x0b\x32\x15.volume_cmdpb.Request\x12+\n\x0bvolume_resp\x18\x0c \x01(\x0b\x32\x16.volume_cmdpb.Response*\x93\x01\n\x0bMessageType\x12\x07\n\x03\x43md\x10\x01\x12\x0b\n\x07\x43mdResp\x10\x02\x12\x08\n\x04Raft\x10\x03\x12\t\n\x05KvReq\x10\x04\x12\n\n\x06KvResp\x10\x05\x12\n\n\x06\x43opReq\x10\x06\x12\x0b\n\x07\x43opResp\x10\x07\x12\t\n\x05PdReq\x10\x08\x12\n\n\x06PdResp\x10\t\x12\r\n\tVolumeReq\x10\n\x12\x0e\n\nVolumeResp\x10\x0b')
   ,
   dependencies=[raft__cmdpb__pb2.DESCRIPTOR,raft__serverpb__pb2.DESCRIPTOR,kvrpcpb__pb2.DESCRIPTOR,coprocessor__pb2.DESCRIPTOR,volume__cmdpb__pb2.DESCRIPTOR,pdpb__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -38,58 +38,54 @@ _MESSAGETYPE = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='None', index=0, number=0,
+      name='Cmd', index=0, number=1,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='Cmd', index=1, number=1,
+      name='CmdResp', index=1, number=2,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='CmdResp', index=2, number=2,
+      name='Raft', index=2, number=3,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='Raft', index=3, number=3,
+      name='KvReq', index=3, number=4,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='KvReq', index=4, number=4,
+      name='KvResp', index=4, number=5,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='KvResp', index=5, number=5,
+      name='CopReq', index=5, number=6,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='CopReq', index=6, number=6,
+      name='CopResp', index=6, number=7,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='CopResp', index=7, number=7,
+      name='PdReq', index=7, number=8,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='PdReq', index=8, number=8,
+      name='PdResp', index=8, number=9,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='PdResp', index=9, number=9,
+      name='VolumeReq', index=9, number=10,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='VolumeReq', index=10, number=10,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='VolumeResp', index=11, number=11,
+      name='VolumeResp', index=10, number=11,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=614,
-  serialized_end=771,
+  serialized_end=761,
 )
 _sym_db.RegisterEnumDescriptor(_MESSAGETYPE)
 
@@ -118,7 +114,7 @@ _MESSAGE = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='msg_type', full_name='msgpb.Message.msg_type', index=0,
       number=1, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
+      has_default_value=False, default_value=1,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),

@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='raft_cmdpb.proto',
   package='raft_cmdpb',
   syntax='proto2',
-  serialized_pb=_b('\n\x10raft_cmdpb.proto\x12\nraft_cmdpb\x1a\x0cmetapb.proto\x1a\rerrorpb.proto\x1a\reraftpb.proto\"%\n\nGetRequest\x12\n\n\x02\x63\x66\x18\x01 \x01(\t\x12\x0b\n\x03key\x18\x02 \x01(\x04\"\x1c\n\x0bGetResponse\x12\r\n\x05value\x18\x01 \x01(\x0c\"R\n\nPutRequest\x12\n\n\x02\x63\x66\x18\x01 \x01(\t\x12\x0b\n\x03key\x18\x02 \x01(\x04\x12\r\n\x05value\x18\x03 \x01(\x0c\x12\x0e\n\x06offset\x18\x04 \x01(\x04\x12\x0c\n\x04size\x18\x05 \x01(\x04\"\r\n\x0bPutResponse\"(\n\rDeleteRequest\x12\n\n\x02\x63\x66\x18\x01 \x01(\t\x12\x0b\n\x03key\x18\x02 \x01(\x04\"\x10\n\x0e\x44\x65leteResponse\"\r\n\x0bSnapRequest\".\n\x0cSnapResponse\x12\x1e\n\x06region\x18\x01 \x01(\x0b\x32\x0e.metapb.Region\"\xcc\x01\n\x07Request\x12%\n\x08\x63md_type\x18\x01 \x01(\x0e\x32\x13.raft_cmdpb.CmdType\x12#\n\x03get\x18\x02 \x01(\x0b\x32\x16.raft_cmdpb.GetRequest\x12#\n\x03put\x18\x04 \x01(\x0b\x32\x16.raft_cmdpb.PutRequest\x12)\n\x06\x64\x65lete\x18\x05 \x01(\x0b\x32\x19.raft_cmdpb.DeleteRequest\x12%\n\x04snap\x18\x06 \x01(\x0b\x32\x17.raft_cmdpb.SnapRequest\"\xd1\x01\n\x08Response\x12%\n\x08\x63md_type\x18\x01 \x01(\x0e\x32\x13.raft_cmdpb.CmdType\x12$\n\x03get\x18\x02 \x01(\x0b\x32\x17.raft_cmdpb.GetResponse\x12$\n\x03put\x18\x04 \x01(\x0b\x32\x17.raft_cmdpb.PutResponse\x12*\n\x06\x64\x65lete\x18\x05 \x01(\x0b\x32\x1a.raft_cmdpb.DeleteResponse\x12&\n\x04snap\x18\x06 \x01(\x0b\x32\x18.raft_cmdpb.SnapResponse\"]\n\x11\x43hangePeerRequest\x12,\n\x0b\x63hange_type\x18\x01 \x01(\x0e\x32\x17.eraftpb.ConfChangeType\x12\x1a\n\x04peer\x18\x02 \x01(\x0b\x32\x0c.metapb.Peer\"4\n\x12\x43hangePeerResponse\x12\x1e\n\x06region\x18\x01 \x01(\x0b\x32\x0e.metapb.Region\"N\n\x0cSplitRequest\x12\x11\n\tsplit_key\x18\x01 \x01(\x0c\x12\x15\n\rnew_region_id\x18\x02 \x01(\x04\x12\x14\n\x0cnew_peer_ids\x18\x03 \x03(\x04\"L\n\rSplitResponse\x12\x1c\n\x04left\x18\x01 \x01(\x0b\x32\x0e.metapb.Region\x12\x1d\n\x05right\x18\x02 \x01(\x0b\x32\x0e.metapb.Region\"@\n\x11\x43ompactLogRequest\x12\x15\n\rcompact_index\x18\x01 \x01(\x04\x12\x14\n\x0c\x63ompact_term\x18\x02 \x01(\x04\"\x14\n\x12\x43ompactLogResponse\"3\n\x15TransferLeaderRequest\x12\x1a\n\x04peer\x18\x01 \x01(\x0b\x32\x0c.metapb.Peer\"\x18\n\x16TransferLeaderResponse\"0\n\x11VerifyHashRequest\x12\r\n\x05index\x18\x01 \x01(\x04\x12\x0c\n\x04hash\x18\x02 \x01(\x0c\"\x14\n\x12VerifyHashResponse\"\xbb\x02\n\x0c\x41\x64minRequest\x12*\n\x08\x63md_type\x18\x01 \x01(\x0e\x32\x18.raft_cmdpb.AdminCmdType\x12\x32\n\x0b\x63hange_peer\x18\x02 \x01(\x0b\x32\x1d.raft_cmdpb.ChangePeerRequest\x12\'\n\x05split\x18\x03 \x01(\x0b\x32\x18.raft_cmdpb.SplitRequest\x12\x32\n\x0b\x63ompact_log\x18\x04 \x01(\x0b\x32\x1d.raft_cmdpb.CompactLogRequest\x12:\n\x0ftransfer_leader\x18\x05 \x01(\x0b\x32!.raft_cmdpb.TransferLeaderRequest\x12\x32\n\x0bverify_hash\x18\x06 \x01(\x0b\x32\x1d.raft_cmdpb.VerifyHashRequest\"\xc1\x02\n\rAdminResponse\x12*\n\x08\x63md_type\x18\x01 \x01(\x0e\x32\x18.raft_cmdpb.AdminCmdType\x12\x33\n\x0b\x63hange_peer\x18\x02 \x01(\x0b\x32\x1e.raft_cmdpb.ChangePeerResponse\x12(\n\x05split\x18\x03 \x01(\x0b\x32\x19.raft_cmdpb.SplitResponse\x12\x33\n\x0b\x63ompact_log\x18\x04 \x01(\x0b\x32\x1e.raft_cmdpb.CompactLogResponse\x12;\n\x0ftransfer_leader\x18\x05 \x01(\x0b\x32\".raft_cmdpb.TransferLeaderResponse\x12\x33\n\x0bverify_hash\x18\x06 \x01(\x0b\x32\x1e.raft_cmdpb.VerifyHashResponse\"\x15\n\x13RegionLeaderRequest\"4\n\x14RegionLeaderResponse\x12\x1c\n\x06leader\x18\x01 \x01(\x0b\x32\x0c.metapb.Peer\"\x15\n\x13RegionDetailRequest\"T\n\x14RegionDetailResponse\x12\x1e\n\x06region\x18\x01 \x01(\x0b\x32\x0e.metapb.Region\x12\x1c\n\x06leader\x18\x02 \x01(\x0b\x32\x0c.metapb.Peer\"\xac\x01\n\rStatusRequest\x12+\n\x08\x63md_type\x18\x01 \x01(\x0e\x32\x19.raft_cmdpb.StatusCmdType\x12\x36\n\rregion_leader\x18\x02 \x01(\x0b\x32\x1f.raft_cmdpb.RegionLeaderRequest\x12\x36\n\rregion_detail\x18\x03 \x01(\x0b\x32\x1f.raft_cmdpb.RegionDetailRequest\"\xaf\x01\n\x0eStatusResponse\x12+\n\x08\x63md_type\x18\x01 \x01(\x0e\x32\x19.raft_cmdpb.StatusCmdType\x12\x37\n\rregion_leader\x18\x02 \x01(\x0b\x32 .raft_cmdpb.RegionLeaderResponse\x12\x37\n\rregion_detail\x18\x03 \x01(\x0b\x32 .raft_cmdpb.RegionDetailResponse\"\x9e\x01\n\x11RaftRequestHeader\x12\x11\n\tregion_id\x18\x01 \x01(\x04\x12\x1a\n\x04peer\x18\x02 \x01(\x0b\x32\x0c.metapb.Peer\x12\x13\n\x0bread_quorum\x18\x03 \x01(\x08\x12\x0c\n\x04uuid\x18\x04 \x01(\x0c\x12)\n\x0cregion_epoch\x18\x05 \x01(\x0b\x32\x13.metapb.RegionEpoch\x12\x0c\n\x04term\x18\x06 \x01(\x04\"W\n\x12RaftResponseHeader\x12\x1d\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x0e.errorpb.Error\x12\x0c\n\x04uuid\x18\x02 \x01(\x0c\x12\x14\n\x0c\x63urrent_term\x18\x03 \x01(\x04\"\xca\x01\n\x0eRaftCmdRequest\x12-\n\x06header\x18\x01 \x01(\x0b\x32\x1d.raft_cmdpb.RaftRequestHeader\x12%\n\x08requests\x18\x02 \x03(\x0b\x32\x13.raft_cmdpb.Request\x12/\n\radmin_request\x18\x03 \x01(\x0b\x32\x18.raft_cmdpb.AdminRequest\x12\x31\n\x0estatus_request\x18\x04 \x01(\x0b\x32\x19.raft_cmdpb.StatusRequest\"\xd2\x01\n\x0fRaftCmdResponse\x12.\n\x06header\x18\x01 \x01(\x0b\x32\x1e.raft_cmdpb.RaftResponseHeader\x12\'\n\tresponses\x18\x02 \x03(\x0b\x32\x14.raft_cmdpb.Response\x12\x31\n\x0e\x61\x64min_response\x18\x03 \x01(\x0b\x32\x19.raft_cmdpb.AdminResponse\x12\x33\n\x0fstatus_response\x18\x04 \x01(\x0b\x32\x1a.raft_cmdpb.StatusResponse*>\n\x07\x43mdType\x12\x0b\n\x07Invalid\x10\x00\x12\x07\n\x03Get\x10\x01\x12\x07\n\x03Put\x10\x03\x12\n\n\x06\x44\x65lete\x10\x04\x12\x08\n\x04Snap\x10\x05*\x80\x01\n\x0c\x41\x64minCmdType\x12\x10\n\x0cInvalidAdmin\x10\x00\x12\x0e\n\nChangePeer\x10\x01\x12\t\n\x05Split\x10\x02\x12\x0e\n\nCompactLog\x10\x03\x12\x12\n\x0eTransferLeader\x10\x04\x12\x0f\n\x0b\x43omputeHash\x10\x05\x12\x0e\n\nVerifyHash\x10\x06*F\n\rStatusCmdType\x12\x11\n\rInvalidStatus\x10\x00\x12\x10\n\x0cRegionLeader\x10\x01\x12\x10\n\x0cRegionDetail\x10\x02')
+  serialized_pb=_b('\n\x10raft_cmdpb.proto\x12\nraft_cmdpb\x1a\x0cmetapb.proto\x1a\rerrorpb.proto\x1a\reraftpb.proto\"%\n\nGetRequest\x12\n\n\x02\x63\x66\x18\x01 \x01(\t\x12\x0b\n\x03key\x18\x02 \x01(\x04\"*\n\x0bGetResponse\x12\r\n\x05value\x18\x01 \x01(\x0c\x12\x0c\n\x04\x66lag\x18\x02 \x01(\x04\"R\n\nPutRequest\x12\n\n\x02\x63\x66\x18\x01 \x01(\t\x12\x0b\n\x03key\x18\x02 \x01(\x04\x12\r\n\x05value\x18\x03 \x01(\x0c\x12\x0e\n\x06offset\x18\x04 \x01(\x04\x12\x0c\n\x04size\x18\x05 \x01(\x04\"\r\n\x0bPutResponse\"(\n\rDeleteRequest\x12\n\n\x02\x63\x66\x18\x01 \x01(\t\x12\x0b\n\x03key\x18\x02 \x01(\x04\"\x10\n\x0e\x44\x65leteResponse\"\r\n\x0bSnapRequest\".\n\x0cSnapResponse\x12\x1e\n\x06region\x18\x01 \x01(\x0b\x32\x0e.metapb.Region\"\xcc\x01\n\x07Request\x12%\n\x08\x63md_type\x18\x01 \x01(\x0e\x32\x13.raft_cmdpb.CmdType\x12#\n\x03get\x18\x02 \x01(\x0b\x32\x16.raft_cmdpb.GetRequest\x12#\n\x03put\x18\x04 \x01(\x0b\x32\x16.raft_cmdpb.PutRequest\x12)\n\x06\x64\x65lete\x18\x05 \x01(\x0b\x32\x19.raft_cmdpb.DeleteRequest\x12%\n\x04snap\x18\x06 \x01(\x0b\x32\x17.raft_cmdpb.SnapRequest\"\xd1\x01\n\x08Response\x12%\n\x08\x63md_type\x18\x01 \x01(\x0e\x32\x13.raft_cmdpb.CmdType\x12$\n\x03get\x18\x02 \x01(\x0b\x32\x17.raft_cmdpb.GetResponse\x12$\n\x03put\x18\x04 \x01(\x0b\x32\x17.raft_cmdpb.PutResponse\x12*\n\x06\x64\x65lete\x18\x05 \x01(\x0b\x32\x1a.raft_cmdpb.DeleteResponse\x12&\n\x04snap\x18\x06 \x01(\x0b\x32\x18.raft_cmdpb.SnapResponse\"]\n\x11\x43hangePeerRequest\x12,\n\x0b\x63hange_type\x18\x01 \x01(\x0e\x32\x17.eraftpb.ConfChangeType\x12\x1a\n\x04peer\x18\x02 \x01(\x0b\x32\x0c.metapb.Peer\"4\n\x12\x43hangePeerResponse\x12\x1e\n\x06region\x18\x01 \x01(\x0b\x32\x0e.metapb.Region\"N\n\x0cSplitRequest\x12\x11\n\tsplit_key\x18\x01 \x01(\x0c\x12\x15\n\rnew_region_id\x18\x02 \x01(\x04\x12\x14\n\x0cnew_peer_ids\x18\x03 \x03(\x04\"L\n\rSplitResponse\x12\x1c\n\x04left\x18\x01 \x01(\x0b\x32\x0e.metapb.Region\x12\x1d\n\x05right\x18\x02 \x01(\x0b\x32\x0e.metapb.Region\"@\n\x11\x43ompactLogRequest\x12\x15\n\rcompact_index\x18\x01 \x01(\x04\x12\x14\n\x0c\x63ompact_term\x18\x02 \x01(\x04\"\x14\n\x12\x43ompactLogResponse\"3\n\x15TransferLeaderRequest\x12\x1a\n\x04peer\x18\x01 \x01(\x0b\x32\x0c.metapb.Peer\"\x18\n\x16TransferLeaderResponse\"0\n\x11VerifyHashRequest\x12\r\n\x05index\x18\x01 \x01(\x04\x12\x0c\n\x04hash\x18\x02 \x01(\x0c\"\x14\n\x12VerifyHashResponse\"\xbb\x02\n\x0c\x41\x64minRequest\x12*\n\x08\x63md_type\x18\x01 \x01(\x0e\x32\x18.raft_cmdpb.AdminCmdType\x12\x32\n\x0b\x63hange_peer\x18\x02 \x01(\x0b\x32\x1d.raft_cmdpb.ChangePeerRequest\x12\'\n\x05split\x18\x03 \x01(\x0b\x32\x18.raft_cmdpb.SplitRequest\x12\x32\n\x0b\x63ompact_log\x18\x04 \x01(\x0b\x32\x1d.raft_cmdpb.CompactLogRequest\x12:\n\x0ftransfer_leader\x18\x05 \x01(\x0b\x32!.raft_cmdpb.TransferLeaderRequest\x12\x32\n\x0bverify_hash\x18\x06 \x01(\x0b\x32\x1d.raft_cmdpb.VerifyHashRequest\"\xc1\x02\n\rAdminResponse\x12*\n\x08\x63md_type\x18\x01 \x01(\x0e\x32\x18.raft_cmdpb.AdminCmdType\x12\x33\n\x0b\x63hange_peer\x18\x02 \x01(\x0b\x32\x1e.raft_cmdpb.ChangePeerResponse\x12(\n\x05split\x18\x03 \x01(\x0b\x32\x19.raft_cmdpb.SplitResponse\x12\x33\n\x0b\x63ompact_log\x18\x04 \x01(\x0b\x32\x1e.raft_cmdpb.CompactLogResponse\x12;\n\x0ftransfer_leader\x18\x05 \x01(\x0b\x32\".raft_cmdpb.TransferLeaderResponse\x12\x33\n\x0bverify_hash\x18\x06 \x01(\x0b\x32\x1e.raft_cmdpb.VerifyHashResponse\"\x15\n\x13RegionLeaderRequest\"4\n\x14RegionLeaderResponse\x12\x1c\n\x06leader\x18\x01 \x01(\x0b\x32\x0c.metapb.Peer\"\x15\n\x13RegionDetailRequest\"T\n\x14RegionDetailResponse\x12\x1e\n\x06region\x18\x01 \x01(\x0b\x32\x0e.metapb.Region\x12\x1c\n\x06leader\x18\x02 \x01(\x0b\x32\x0c.metapb.Peer\"\xac\x01\n\rStatusRequest\x12+\n\x08\x63md_type\x18\x01 \x01(\x0e\x32\x19.raft_cmdpb.StatusCmdType\x12\x36\n\rregion_leader\x18\x02 \x01(\x0b\x32\x1f.raft_cmdpb.RegionLeaderRequest\x12\x36\n\rregion_detail\x18\x03 \x01(\x0b\x32\x1f.raft_cmdpb.RegionDetailRequest\"\xaf\x01\n\x0eStatusResponse\x12+\n\x08\x63md_type\x18\x01 \x01(\x0e\x32\x19.raft_cmdpb.StatusCmdType\x12\x37\n\rregion_leader\x18\x02 \x01(\x0b\x32 .raft_cmdpb.RegionLeaderResponse\x12\x37\n\rregion_detail\x18\x03 \x01(\x0b\x32 .raft_cmdpb.RegionDetailResponse\"\x9e\x01\n\x11RaftRequestHeader\x12\x11\n\tregion_id\x18\x01 \x01(\x04\x12\x1a\n\x04peer\x18\x02 \x01(\x0b\x32\x0c.metapb.Peer\x12\x13\n\x0bread_quorum\x18\x03 \x01(\x08\x12\x0c\n\x04uuid\x18\x04 \x01(\x0c\x12)\n\x0cregion_epoch\x18\x05 \x01(\x0b\x32\x13.metapb.RegionEpoch\x12\x0c\n\x04term\x18\x06 \x01(\x04\"W\n\x12RaftResponseHeader\x12\x1d\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x0e.errorpb.Error\x12\x0c\n\x04uuid\x18\x02 \x01(\x0c\x12\x14\n\x0c\x63urrent_term\x18\x03 \x01(\x04\"\xca\x01\n\x0eRaftCmdRequest\x12-\n\x06header\x18\x01 \x01(\x0b\x32\x1d.raft_cmdpb.RaftRequestHeader\x12%\n\x08requests\x18\x02 \x03(\x0b\x32\x13.raft_cmdpb.Request\x12/\n\radmin_request\x18\x03 \x01(\x0b\x32\x18.raft_cmdpb.AdminRequest\x12\x31\n\x0estatus_request\x18\x04 \x01(\x0b\x32\x19.raft_cmdpb.StatusRequest\"\xd2\x01\n\x0fRaftCmdResponse\x12.\n\x06header\x18\x01 \x01(\x0b\x32\x1e.raft_cmdpb.RaftResponseHeader\x12\'\n\tresponses\x18\x02 \x03(\x0b\x32\x14.raft_cmdpb.Response\x12\x31\n\x0e\x61\x64min_response\x18\x03 \x01(\x0b\x32\x19.raft_cmdpb.AdminResponse\x12\x33\n\x0fstatus_response\x18\x04 \x01(\x0b\x32\x1a.raft_cmdpb.StatusResponse*>\n\x07\x43mdType\x12\x0b\n\x07Invalid\x10\x00\x12\x07\n\x03Get\x10\x01\x12\x07\n\x03Put\x10\x03\x12\n\n\x06\x44\x65lete\x10\x04\x12\x08\n\x04Snap\x10\x05*\x80\x01\n\x0c\x41\x64minCmdType\x12\x10\n\x0cInvalidAdmin\x10\x00\x12\x0e\n\nChangePeer\x10\x01\x12\t\n\x05Split\x10\x02\x12\x0e\n\nCompactLog\x10\x03\x12\x12\n\x0eTransferLeader\x10\x04\x12\x0f\n\x0b\x43omputeHash\x10\x05\x12\x0e\n\nVerifyHash\x10\x06*F\n\rStatusCmdType\x12\x11\n\rInvalidStatus\x10\x00\x12\x10\n\x0cRegionLeader\x10\x01\x12\x10\n\x0cRegionDetail\x10\x02')
   ,
   dependencies=[metapb__pb2.DESCRIPTOR,errorpb__pb2.DESCRIPTOR,eraftpb__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -57,8 +57,8 @@ _CMDTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=3181,
-  serialized_end=3243,
+  serialized_start=3195,
+  serialized_end=3257,
 )
 _sym_db.RegisterEnumDescriptor(_CMDTYPE)
 
@@ -100,8 +100,8 @@ _ADMINCMDTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=3246,
-  serialized_end=3374,
+  serialized_start=3260,
+  serialized_end=3388,
 )
 _sym_db.RegisterEnumDescriptor(_ADMINCMDTYPE)
 
@@ -127,8 +127,8 @@ _STATUSCMDTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=3376,
-  serialized_end=3446,
+  serialized_start=3390,
+  serialized_end=3460,
 )
 _sym_db.RegisterEnumDescriptor(_STATUSCMDTYPE)
 
@@ -203,6 +203,13 @@ _GETRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='flag', full_name='raft_cmdpb.GetResponse.flag', index=1,
+      number=2, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -216,7 +223,7 @@ _GETRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=115,
-  serialized_end=143,
+  serialized_end=157,
 )
 
 
@@ -274,8 +281,8 @@ _PUTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=145,
-  serialized_end=227,
+  serialized_start=159,
+  serialized_end=241,
 )
 
 
@@ -298,8 +305,8 @@ _PUTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=229,
-  serialized_end=242,
+  serialized_start=243,
+  serialized_end=256,
 )
 
 
@@ -336,8 +343,8 @@ _DELETEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=244,
-  serialized_end=284,
+  serialized_start=258,
+  serialized_end=298,
 )
 
 
@@ -360,8 +367,8 @@ _DELETERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=286,
-  serialized_end=302,
+  serialized_start=300,
+  serialized_end=316,
 )
 
 
@@ -384,8 +391,8 @@ _SNAPREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=304,
-  serialized_end=317,
+  serialized_start=318,
+  serialized_end=331,
 )
 
 
@@ -415,8 +422,8 @@ _SNAPRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=319,
-  serialized_end=365,
+  serialized_start=333,
+  serialized_end=379,
 )
 
 
@@ -474,8 +481,8 @@ _REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=368,
-  serialized_end=572,
+  serialized_start=382,
+  serialized_end=586,
 )
 
 
@@ -533,8 +540,8 @@ _RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=575,
-  serialized_end=784,
+  serialized_start=589,
+  serialized_end=798,
 )
 
 
@@ -571,8 +578,8 @@ _CHANGEPEERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=786,
-  serialized_end=879,
+  serialized_start=800,
+  serialized_end=893,
 )
 
 
@@ -602,8 +609,8 @@ _CHANGEPEERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=881,
-  serialized_end=933,
+  serialized_start=895,
+  serialized_end=947,
 )
 
 
@@ -647,8 +654,8 @@ _SPLITREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=935,
-  serialized_end=1013,
+  serialized_start=949,
+  serialized_end=1027,
 )
 
 
@@ -685,8 +692,8 @@ _SPLITRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1015,
-  serialized_end=1091,
+  serialized_start=1029,
+  serialized_end=1105,
 )
 
 
@@ -723,8 +730,8 @@ _COMPACTLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1093,
-  serialized_end=1157,
+  serialized_start=1107,
+  serialized_end=1171,
 )
 
 
@@ -747,8 +754,8 @@ _COMPACTLOGRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1159,
-  serialized_end=1179,
+  serialized_start=1173,
+  serialized_end=1193,
 )
 
 
@@ -778,8 +785,8 @@ _TRANSFERLEADERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1181,
-  serialized_end=1232,
+  serialized_start=1195,
+  serialized_end=1246,
 )
 
 
@@ -802,8 +809,8 @@ _TRANSFERLEADERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1234,
-  serialized_end=1258,
+  serialized_start=1248,
+  serialized_end=1272,
 )
 
 
@@ -840,8 +847,8 @@ _VERIFYHASHREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1260,
-  serialized_end=1308,
+  serialized_start=1274,
+  serialized_end=1322,
 )
 
 
@@ -864,8 +871,8 @@ _VERIFYHASHRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1310,
-  serialized_end=1330,
+  serialized_start=1324,
+  serialized_end=1344,
 )
 
 
@@ -930,8 +937,8 @@ _ADMINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1333,
-  serialized_end=1648,
+  serialized_start=1347,
+  serialized_end=1662,
 )
 
 
@@ -996,8 +1003,8 @@ _ADMINRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1651,
-  serialized_end=1972,
+  serialized_start=1665,
+  serialized_end=1986,
 )
 
 
@@ -1020,8 +1027,8 @@ _REGIONLEADERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1974,
-  serialized_end=1995,
+  serialized_start=1988,
+  serialized_end=2009,
 )
 
 
@@ -1051,8 +1058,8 @@ _REGIONLEADERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1997,
-  serialized_end=2049,
+  serialized_start=2011,
+  serialized_end=2063,
 )
 
 
@@ -1075,8 +1082,8 @@ _REGIONDETAILREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2051,
-  serialized_end=2072,
+  serialized_start=2065,
+  serialized_end=2086,
 )
 
 
@@ -1113,8 +1120,8 @@ _REGIONDETAILRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2074,
-  serialized_end=2158,
+  serialized_start=2088,
+  serialized_end=2172,
 )
 
 
@@ -1158,8 +1165,8 @@ _STATUSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2161,
-  serialized_end=2333,
+  serialized_start=2175,
+  serialized_end=2347,
 )
 
 
@@ -1203,8 +1210,8 @@ _STATUSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2336,
-  serialized_end=2511,
+  serialized_start=2350,
+  serialized_end=2525,
 )
 
 
@@ -1269,8 +1276,8 @@ _RAFTREQUESTHEADER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2514,
-  serialized_end=2672,
+  serialized_start=2528,
+  serialized_end=2686,
 )
 
 
@@ -1314,8 +1321,8 @@ _RAFTRESPONSEHEADER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2674,
-  serialized_end=2761,
+  serialized_start=2688,
+  serialized_end=2775,
 )
 
 
@@ -1366,8 +1373,8 @@ _RAFTCMDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2764,
-  serialized_end=2966,
+  serialized_start=2778,
+  serialized_end=2980,
 )
 
 
@@ -1418,8 +1425,8 @@ _RAFTCMDRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2969,
-  serialized_end=3179,
+  serialized_start=2983,
+  serialized_end=3193,
 )
 
 _SNAPRESPONSE.fields_by_name['region'].message_type = metapb__pb2._REGION

@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='metapb.proto',
   package='metapb',
   syntax='proto2',
-  serialized_pb=_b('\n\x0cmetapb.proto\x12\x06metapb\"-\n\x07\x43luster\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x16\n\x0emax_peer_count\x18\x02 \x01(\r\"(\n\nStoreLabel\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"k\n\x05Store\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\t\x12!\n\x05state\x18\x03 \x01(\x0e\x32\x12.metapb.StoreState\x12\"\n\x06labels\x18\x04 \x03(\x0b\x32\x12.metapb.StoreLabel\"0\n\x0bRegionEpoch\x12\x10\n\x08\x63onf_ver\x18\x01 \x01(\x04\x12\x0f\n\x07version\x18\x02 \x01(\x04\"\x8e\x01\n\x06Region\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x11\n\tstart_key\x18\x02 \x01(\x0c\x12\x0f\n\x07\x65nd_key\x18\x03 \x01(\x0c\x12)\n\x0cregion_epoch\x18\x04 \x01(\x0b\x32\x13.metapb.RegionEpoch\x12\x1b\n\x05peers\x18\x05 \x03(\x0b\x32\x0c.metapb.Peer\x12\x0c\n\x04term\x18\x06 \x01(\x04\"$\n\x04Peer\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x10\n\x08store_id\x18\x02 \x01(\x04*0\n\nStoreState\x12\x06\n\x02Up\x10\x00\x12\x0b\n\x07Offline\x10\x01\x12\r\n\tTombstone\x10\x02')
+  serialized_pb=_b('\n\x0cmetapb.proto\x12\x06metapb\"-\n\x07\x43luster\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x16\n\x0emax_peer_count\x18\x02 \x01(\r\"(\n\nStoreLabel\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"k\n\x05Store\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\t\x12!\n\x05state\x18\x03 \x01(\x0e\x32\x12.metapb.StoreState\x12\"\n\x06labels\x18\x04 \x03(\x0b\x32\x12.metapb.StoreLabel\"0\n\x0bRegionEpoch\x12\x10\n\x08\x63onf_ver\x18\x01 \x01(\x04\x12\x0f\n\x07version\x18\x02 \x01(\x04\"\x8e\x01\n\x06Region\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x11\n\tstart_key\x18\x02 \x01(\x0c\x12\x0f\n\x07\x65nd_key\x18\x03 \x01(\x0c\x12)\n\x0cregion_epoch\x18\x04 \x01(\x0b\x32\x13.metapb.RegionEpoch\x12\x1b\n\x05peers\x18\x05 \x03(\x0b\x32\x0c.metapb.Peer\x12\x0c\n\x04term\x18\x06 \x01(\x04\"$\n\x04Peer\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x10\n\x08store_id\x18\x02 \x01(\x04\"E\n\x06Needle\x12\x11\n\tmagic_num\x18\x01 \x01(\x04\x12\x0c\n\x04size\x18\x02 \x01(\x04\x12\x0b\n\x03key\x18\x03 \x01(\x04\x12\r\n\x05value\x18\x04 \x01(\x0c*0\n\nStoreState\x12\x06\n\x02Up\x10\x00\x12\x0b\n\x07Offline\x10\x01\x12\r\n\tTombstone\x10\x02')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -45,8 +45,8 @@ _STORESTATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=455,
-  serialized_end=503,
+  serialized_start=526,
+  serialized_end=574,
 )
 _sym_db.RegisterEnumDescriptor(_STORESTATE)
 
@@ -326,6 +326,58 @@ _PEER = _descriptor.Descriptor(
   serialized_end=453,
 )
 
+
+_NEEDLE = _descriptor.Descriptor(
+  name='Needle',
+  full_name='metapb.Needle',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='magic_num', full_name='metapb.Needle.magic_num', index=0,
+      number=1, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='size', full_name='metapb.Needle.size', index=1,
+      number=2, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='key', full_name='metapb.Needle.key', index=2,
+      number=3, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='metapb.Needle.value', index=3,
+      number=4, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=455,
+  serialized_end=524,
+)
+
 _STORE.fields_by_name['state'].enum_type = _STORESTATE
 _STORE.fields_by_name['labels'].message_type = _STORELABEL
 _REGION.fields_by_name['region_epoch'].message_type = _REGIONEPOCH
@@ -336,6 +388,7 @@ DESCRIPTOR.message_types_by_name['Store'] = _STORE
 DESCRIPTOR.message_types_by_name['RegionEpoch'] = _REGIONEPOCH
 DESCRIPTOR.message_types_by_name['Region'] = _REGION
 DESCRIPTOR.message_types_by_name['Peer'] = _PEER
+DESCRIPTOR.message_types_by_name['Needle'] = _NEEDLE
 DESCRIPTOR.enum_types_by_name['StoreState'] = _STORESTATE
 
 Cluster = _reflection.GeneratedProtocolMessageType('Cluster', (_message.Message,), dict(
@@ -379,6 +432,13 @@ Peer = _reflection.GeneratedProtocolMessageType('Peer', (_message.Message,), dic
   # @@protoc_insertion_point(class_scope:metapb.Peer)
   ))
 _sym_db.RegisterMessage(Peer)
+
+Needle = _reflection.GeneratedProtocolMessageType('Needle', (_message.Message,), dict(
+  DESCRIPTOR = _NEEDLE,
+  __module__ = 'metapb_pb2'
+  # @@protoc_insertion_point(class_scope:metapb.Needle)
+  ))
+_sym_db.RegisterMessage(Needle)
 
 
 # @@protoc_insertion_point(module_scope)

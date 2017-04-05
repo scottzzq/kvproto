@@ -12,6 +12,7 @@ message GetRequest {
 
 message GetResponse {
     optional bytes value = 1;
+    optional uint64 flag = 2;
 }
 
 message PutRequest {
